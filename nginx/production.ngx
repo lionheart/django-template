@@ -1,18 +1,18 @@
-upstream blah {
-  server unix:/tmp/blah.sock;
+upstream goodiebag {
+  server unix:/tmp/goodiebag.sock;
 }
 
 server {
   listen 80;
 
-  server_name staging.blah.com blah.com www.blah.com;
-  root /var/www/blah;
+  server_name staging.goodiebag.com blah.com www.blah.com;
+  root /var/www/goodiebag;
 
-  access_log /var/log/nginx/blah.log combined;
-  error_log /var/log/nginx/blah.err warn;
+  access_log /var/log/nginx/goodiebag.log combined;
+  error_log /var/log/nginx/goodiebag.err warn;
 
   location / {
-    proxy_pass http://blah;
+    proxy_pass http://goodiebag;
     proxy_redirect off;
     proxy_set_header Host $http_host;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -22,7 +22,7 @@ server {
 
   location /media/ {
     access_log off;
-    alias /var/www/blah/media/;
+    alias /var/www/goodiebag/media/;
   }
 
   location /media/admin/ {

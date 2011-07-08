@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib.project import *
 
 env.user = 'ubuntu'
-env.app = 'blah'
+env.app = 'goodiebag'
 env.dest = "/var/www/%(app)s" % env
 
 env.roledefs['app'] = ['web3.elmcitylabs.com']

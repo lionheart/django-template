@@ -12,9 +12,9 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blah',
-        'USER': 'blah',
-        'PASSWORD': 'blah',
+        'NAME': 'goodiebag',
+        'USER': 'goodiebag',
+        'PASSWORD': 'goodiebag',
         'HOST': '127.0.0.1',
         'PORT': '',
     }

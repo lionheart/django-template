@@ -1,12 +1,12 @@
-bind = "unix:/tmp/blah.sock"
+bind = "unix:/tmp/goodiebag.sock"
 workers = 3
 daemon = True
-pidfile = "/var/run/gunicorn/blah.pid"
+pidfile = "/var/run/gunicorn/goodiebag.pid"
 loglevel = "error"
-proc_name = "blah"
+proc_name = "goodiebag"
 worker_class = "gevent"
 debug = False
-logfile = "/var/log/gunicorn/blah.log"
+logfile = "/var/log/gunicorn/goodiebag.log"
 user = "gunicorn"
 group = "gunicorn"
 

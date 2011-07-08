@@ -1,0 +1,10 @@
+- *.db
+- *.pyc
+- .DS_Store
+- .git/
+- RSYNC_EXCLUDES
+- fabfile.py
+- src/
+- ssl/
+- .sass-cache/
+

@@ -1,0 +1,14 @@
+django
+django-annoying
+psycopg2
+py-bcrypt
+python-memcached
+south
+
+# Debug Tools
+django-debug-toolbar
+django-devserver
+guppy
+line_profiler
+sqlparse
+werkzeug

@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.transaction.TransactionMiddleware'
 )
 
-ROOT_URLCONF = 'blah.urls'
+ROOT_URLCONF = 'goodiebag.urls'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

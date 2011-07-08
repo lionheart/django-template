@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.transaction.TransactionMiddleware'
 )
 
-ROOT_URLCONF = 'pledge4good.urls'
+ROOT_URLCONF = 'blah.urls'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -71,7 +71,8 @@ INSTALLED_APPS = (
     'app',
     'south',
 
-    # 'storages',
+    'debug_toolbar',
+    'devserver',
 )
 
 LOGGING = {
@@ -111,33 +112,41 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
 LOGOUT_URL = '/logout'
 
-BRAINTREE_MERCHANT_ID = ''
-BRAINTREE_PUBLIC_KEY = ''
-BRAINTREE_PRIVATE_KEY = ''
+# Django Toolbar Settings
 
-FACEBOOK_APP_ID = ''
-FACEBOOK_APP_API_KEY = ''
-FACEBOOK_APP_SECRET = ''
-FACEBOOK_REGISTRATION_METADATA = {u'fields': u'[{"name": "name"}, {"name": "first_name"}, {"name": "last_name"}, {"type": "text", "name": "username", "description": "Username"}, {"name": "email"}, {"name": "password"}]'}
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel',
+)
 
-TWITTER_CONSUMER_SECRET = ''
-TWITTER_CONSUMER_KEY = ''
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+    'SHOW_TOOLBAR_CALLBACK': lambda request: True,
+    'EXTRA_SIGNALS': ['myproject.signals.MySignal'],
+    'HIDE_DJANGO_SQL': False,
+    'TAG': 'div',
+}
 
-# Make sure this is URL-encoded: e.g.
-# TWITTER_CALLBACK_URL = 'http%3A%2F%2Fpledge4good.elmcitylabs.com%2Fregister%2Ftwitter%2Fcomplete'
-TWITTER_CALLBACK_URL = ''
+INTERNAL_IPS = ['127.0.0.1']
 
-# EMAIL_BACKEND = "django_ses.SESBackend"
+# Django devserver
 
-# S3-based file uploading
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+DEVSERVER_MODULES = (
+    'devserver.modules.sql.SQLRealTimeModule',
+    'devserver.modules.sql.SQLSummaryModule',
+    'devserver.modules.profile.ProfileSummaryModule',
 
-AWS_ACCESS_KEY_ID = ''
-AWS_SECRET_ACCESS_KEY = ''
-AWS_STORAGE_BUCKET_NAME = ''
+    # Modules not enabled by default
+    'devserver.modules.ajax.AjaxDumpModule',
+    'devserver.modules.cache.CacheSummaryModule',
+)
 
-from S3 import CallingFormat
-AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
 
 try:
     from local_settings import *

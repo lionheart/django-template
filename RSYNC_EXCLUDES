@@ -1,5 +1,6 @@
 - *.db
-- *.pyc
+- settings.pyc
+- local_settings.pyc
 - .DS_Store
 - .git/
 - RSYNC_EXCLUDES

@@ -51,7 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.transaction.TransactionMiddleware'
+    'django.middleware.transaction.TransactionMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -133,6 +133,7 @@ INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
 # Django devserver
 
+DEVSERVER_IGNORED_PREFIXES = ['/media', '/__debug__']
 DEVSERVER_MODULES = (
     'devserver.modules.sql.SQLRealTimeModule',
     'devserver.modules.sql.SQLSummaryModule',

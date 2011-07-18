@@ -1,0 +1,5 @@
+
+
+If your project is named `example`, just run this command and you'll be good to go.
+
+    find . -type f | grep -v ".git/" | xargs -I {} mv {} ../example/{}

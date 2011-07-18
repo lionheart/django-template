@@ -27,14 +27,14 @@ USE_I18N = True
 
 USE_L10N = True
 
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(BASE, "media")
 
-MEDIA_URL = '/media'
+MEDIA_URL = '/media/'
 
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE, "templates/"),
+    os.path.join(BASE, "templates"),
 )
 
 # Regenerate this.
@@ -59,7 +59,6 @@ ROOT_URLCONF = 'goodiebag.urls'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'app.backends.CustomAuthBackend',
 )
 
 INSTALLED_APPS = (
@@ -69,6 +68,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
+    'django.contrib.webdesign',
     'app',
     'south',
 

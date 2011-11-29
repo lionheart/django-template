@@ -138,10 +138,6 @@ DEVSERVER_MODULES = (
     'devserver.modules.sql.SQLRealTimeModule',
     'devserver.modules.sql.SQLSummaryModule',
     'devserver.modules.profile.ProfileSummaryModule',
-
-    # Modules not enabled by default
-    'devserver.modules.ajax.AjaxDumpModule',
-    'devserver.modules.cache.CacheSummaryModule',
 )
 
 

@@ -3,14 +3,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 def home(request):
-    pass
+    return {}
 
-def login_page(request):
-    pass
-
-def logout_page(request):
-    pass
-
-def register_page(request):
-    pass
+# XXX Uncomment for Facebook integration
+# from ecl_facebook.decorators import facebook_callback
+# @facebook_callback
+# def oauth_facebook_complete(request, token):
+#     facebook = Facebook(token)
+#     user = authenticate(id=user.id)
+#     login(request, user)
+#     return HttpResponseRedirect(user.get_absolute_url())
 

@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
-
+from django.conf import settings
 from django.contrib import admin
+
 from ecl_django.utils import simple_url
 from ecl_django.utils import template_url
 

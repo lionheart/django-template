@@ -1,5 +1,4 @@
 django
-django-annoying
 psycopg2
 py-bcrypt
 python-memcached
@@ -8,7 +7,8 @@ south
 # Debug Tools
 django-debug-toolbar
 django-devserver
-guppy
-line_profiler
 sqlparse
-werkzeug
+
+https://packages.elmcitylabs.com/ecl_django-0.3.8.tar.gz#ecl_django
+https://packages.elmcitylabs.com/ecl_tools-0.3.0.tar.gz#ecl_tools
+

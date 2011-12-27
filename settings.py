@@ -139,7 +139,6 @@ DEVSERVER_MODULES = (
     'devserver.modules.profile.ProfileSummaryModule',
 )
 
-
 try:
     from local_settings import *
 except:

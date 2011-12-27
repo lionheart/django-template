@@ -5,7 +5,7 @@ upstream goodiebag {
 server {
   listen 80;
 
-  server_name staging.goodiebag.com blah.com www.blah.com;
+  server_name goodiebag.com;
   root /var/www/goodiebag;
 
   access_log /var/log/nginx/goodiebag.log combined;
@@ -20,13 +20,14 @@ server {
 
   location /robots.txt { }
 
+  location /media/admin/ {
+    alias /usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/;
+    access_log off;
+  }
+
   location /media/ {
     access_log off;
     alias /var/www/goodiebag/media/;
-  }
-
-  location /media/admin/ {
-    alias /usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/;
   }
 
   location = /favicon.ico {

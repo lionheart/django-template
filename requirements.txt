@@ -1,14 +1,31 @@
 django
+django-debug-toolbar
+django-devserver
 psycopg2
 py-bcrypt
 python-memcached
 south
-
-# Debug Tools
-django-debug-toolbar
-django-devserver
 sqlparse
 
-https://packages.elmcitylabs.com/ecl_django-0.3.8.tar.gz#ecl_django
+# AWS
+boto
+django-storages
+https://github.com/areski/django-ses/tarball/master
+
+# ECL
+https://packages.elmcitylabs.com/chargemaster-0.2.19.tar.gz
+https://packages.elmcitylabs.com/ecl_django-0.4.7.tar.gz#ecl_django
+https://packages.elmcitylabs.com/ecl_facebook-0.3.12.tar.gz
 https://packages.elmcitylabs.com/ecl_tools-0.3.0.tar.gz#ecl_tools
+https://packages.elmcitylabs.com/ecl_twitter-0.3.3.tar.gz
+
+# Search
+django-haystack==1.2.6
+pysolr
+whoosh
+
+# Misc
+PIL
+django-shorturls
+suds
 

@@ -4,12 +4,13 @@ from django.contrib import admin
 
 from ecl_django.utils import simple_url
 from ecl_django.utils import template_url
+from ecl_django.utils import home_url
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'home', name='home'),
+    home_url('home'),
 )
 
 # XXX Uncomment for Facebook integration

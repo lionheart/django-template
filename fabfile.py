@@ -7,6 +7,8 @@ env.app = 'goodiebag'
 env.dest = "/var/www/%(app)s" % env
 
 env.roledefs['app'] = ['web3.elmcitylabs.com']
+HOME = os.getenv('HOME')
+env.key_filename = [os.path.join(HOME, ".ssh/goodiebag-web-servers.pem")]
 
 def production():
     env.label = "production"

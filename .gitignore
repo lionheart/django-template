@@ -7,3 +7,4 @@ src/
 lib/
 bin/
 include/
+local.db

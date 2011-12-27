@@ -37,17 +37,12 @@ def shutdown_nginx():
 @roles('app')
 def deploy():
     rsync()
-    migrate_db()
     reload_gunicorn()
 
 @roles('app')
 def rsync():
     print(colors.yellow("Deploying sources to %(host)s." % env))
-    local("""rsync --exclude-from=RSYNC_EXCLUDES -POuhimrtyz --delete-after --delete-excluded . %(user)s@%(host)s:%(dest)s""" % env)
-
-@roles('app')
-def migrate_db():
-    with cd(env.dest):
-        run("./manage.py migrate app")
-
+    key_string = " -i".join(env.key_filename)
+    env.key_string = key_string
+    local("""rsync --rsh='ssh -i %(key_string)s' -FPOuhimrtyz . %(user)s@%(host)s:%(dest)s""" % env)
 

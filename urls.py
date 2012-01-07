@@ -8,7 +8,7 @@ from ecl_django.utils import home_url
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('app.views',
     url(r'^admin/', include(admin.site.urls)),
     home_url('home'),
 )

@@ -1,4 +1,5 @@
 *.pyc
+*.un~
 .sass-cache/
 .DS_Store
 local_settings.py

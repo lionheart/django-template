@@ -7,14 +7,13 @@
     <link rel='shortcut icon' href='/favicon.ico' />
     <link rel='apple-touch-icon' href="">
 
-    <!-- TODO: Meta Tags -->
     <meta name='title' content='' />
     <meta name='description' content='' />
 
-    <!-- TODO: Google Site Verification -->
+    <!-- Google Site Verification -->
     <meta name='google-site-verification' content="" />
 
-    <!-- TODO: Open Graph -->
+    <!-- Facebook Open Graph -->
     <meta property="fb:admins" content="" />
     <meta property="og:site_name" content="" />
     <meta property="og:title" content="" />
@@ -24,10 +23,21 @@
     <meta property="og:image" content="" />
     <meta property="fb:page_id" content="" />
 
-    <!-- TODO: Google Analytics -->
-    <!-- TODO: Mixpanel -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
 
-    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+</script>
+
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type='text/javascript' src="{{ MEDIA_URL }}js/main.js"></script>
 
     {% block media %}{% endblock %}
   </head>

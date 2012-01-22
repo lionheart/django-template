@@ -20,6 +20,10 @@ server {
 
   location /robots.txt { }
 
+  location /204 {
+    return 204;
+  }
+
   location /media/admin/ {
     alias /usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/;
     access_log off;
@@ -31,9 +35,8 @@ server {
   }
 
   location = /favicon.ico {
-    empty_gif;
     access_log off;
+    empty_gif;
   }
 }
-
 

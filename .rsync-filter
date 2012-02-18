@@ -1,4 +1,5 @@
 - *.db
+- *.un~
 - .DS_Store
 - .git/
 - .rsync-filter
@@ -7,9 +8,8 @@
 - fabfile.py
 - lib/
 - local_settings.pyc
+- media/
 - settings.pyc
 - src/
 - ssl/
-- media/
-- *.un~
 

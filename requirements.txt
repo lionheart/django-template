@@ -15,7 +15,7 @@ fabric==1.4
 # AWS
 # boto==2.1.1
 # django-storages==1.1.4
-# https://github.com/areski/django-ses/tarball/master
+# django-ses==0.4.0
 
 # ECL
 https://packages.elmcitylabs.com/ecl_django-0.4.9.tar.gz#ecl_django

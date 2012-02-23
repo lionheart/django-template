@@ -18,8 +18,8 @@ fabric==1.4
 # django-ses==0.4.0
 
 # ECL
-https://packages.elmcitylabs.com/ecl_django-0.4.9.tar.gz#ecl_django
-https://packages.elmcitylabs.com/ecl_tools-0.3.4.tar.gz#ecl_tools
+https://packages.elmcitylabs.com/ecl_django-0.4.16.tar.gz#ecl_django
+https://packages.elmcitylabs.com/ecl_tools-0.3.7.tar.gz#ecl_tools
 # https://packages.elmcitylabs.com/chargemaster-0.2.19.tar.gz
 # https://packages.elmcitylabs.com/ecl_facebook-0.3.12.tar.gz#ecl_facebook
 # https://packages.elmcitylabs.com/ecl_twitter-0.3.3.tar.gz#ecl_twitter

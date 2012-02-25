@@ -23,9 +23,8 @@ urlpatterns = patterns('app.views',
 #     url(r'oauth/facebook/begin$', 'oauth_facebook_begin', name='oauth-facebook-begin'),
 # )
 
-if settings.DEBUG:
-    urlpatterns += (
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-            {'document_root': settings.MEDIA_ROOT }),
-        )
+urlpatterns += (
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT }),
+    )
 

@@ -1,5 +1,6 @@
-from django.conf.urls.defaults import patterns, include, url
 from django.conf import settings
+from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
 
@@ -16,15 +17,5 @@ urlpatterns = patterns('app.views',
     home_url('home'),
 )
 
-# XXX Uncomment for Facebook integration
-# import ecl_facebook
-#
-# urlpatterns += patterns('ecl_facebook.views',
-#     url(r'oauth/facebook/begin$', 'oauth_facebook_begin', name='oauth-facebook-begin'),
-# )
-
-urlpatterns += (
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': settings.MEDIA_ROOT }),
-    )
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

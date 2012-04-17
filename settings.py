@@ -136,6 +136,16 @@ DEVSERVER_MODULES = (
     'devserver.modules.profile.ProfileSummaryModule',
 )
 
+# from S3 import CallingFormat
+# AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+
+# AWS_STATIC_STORAGE_BUCKET_NAME = 'static.{{ project_name }}.com'
+# AWS_STATIC_ACCESS_KEY_ID = ''
+# AWS_STATIC_SECRET_ACCESS_KEY = ''
+# AWS_HEADERS = {
+#         'Cache-Control': "max-age:5, public"
+#     }
+
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # AWS_ACCESS_KEY_ID = ''
 # AWS_SECRET_ACCESS_KEY = ''

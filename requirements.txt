@@ -1,19 +1,19 @@
-django==1.3.1
-psycopg2==2.4.4
+django==1.4
+psycopg2==2.4.5
 py-bcrypt==0.2
 python-memcached==1.48
-south==0.7.3
+south==0.7.4
 
 # Debug Tools
 sqlparse==0.1.3
-django-debug-toolbar==0.9.1
+django-debug-toolbar==0.9.4
 django-devserver==0.3.1
 
 # Deployment
-fabric==1.4
+fabric==1.4.1
 
 # AWS
-# boto==2.1.1
+# boto==2.3.0
 # django-storages==1.1.4
 # django-ses==0.4.0
 
@@ -21,8 +21,8 @@ fabric==1.4
 https://packages.elmcitylabs.com/ecl_django-0.4.16.tar.gz#ecl_django
 https://packages.elmcitylabs.com/ecl_tools-0.3.7.tar.gz#ecl_tools
 # https://packages.elmcitylabs.com/chargemaster-0.2.19.tar.gz
-# https://packages.elmcitylabs.com/ecl_facebook-0.3.12.tar.gz#ecl_facebook
-# https://packages.elmcitylabs.com/ecl_twitter-0.3.3.tar.gz#ecl_twitter
+# ecl-facebook==1.2.7
+# ecl-twitter==1.2.0
 
 # Search
 # django-haystack==1.2.6
@@ -33,4 +33,6 @@ https://packages.elmcitylabs.com/ecl_tools-0.3.7.tar.gz#ecl_tools
 # PIL
 # django-shorturls==1.0.1
 # suds==0.4
+# django-celery==2.5.1
 
+django-redis-sessions==0.2.3

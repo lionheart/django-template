@@ -6,6 +6,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = ()
+# SERVER_EMAIL = "hi@example.com"
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -36,7 +37,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),
 )
 
-# Regenerate this.
+# TODO: Regenerate this.
 SECRET_KEY = ''
 
 TEMPLATE_LOADERS = (
@@ -112,8 +113,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
 LOGOUT_URL = '/logout'
 
-# Django Toolbar Settings
-
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.version.VersionDebugPanel',
     'debug_toolbar.panels.timer.TimerDebugPanel',
@@ -131,8 +130,6 @@ DEBUG_TOOLBAR_CONFIG = {
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
-# Django devserver
-
 DEVSERVER_IGNORED_PREFIXES = ['/media', '/__debug__']
 DEVSERVER_MODULES = (
     'devserver.modules.sql.SQLRealTimeModule',
@@ -140,7 +137,18 @@ DEVSERVER_MODULES = (
     'devserver.modules.profile.ProfileSummaryModule',
 )
 
+# EMAIL_BACKEND = "django_ses.SESBackend"
+# AWS_SES_ACCESS_KEY_ID = ''
+# AWS_SES_SECRET_ACCESS_KEY = ''
+
+# BROKER_TRANSPORT = "redis"
+# BROKER_URL = "redis://localhost:6379/1"
+
+SESSION_REDIS_PREFIX = "session"
+SESSION_ENGINE = 'redis_sessions.session'
+
 try:
     from local_settings import *
 except:
     pass
+

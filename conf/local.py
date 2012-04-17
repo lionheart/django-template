@@ -8,7 +8,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'goodiebag'
+        'LOCATION': '{{ project_name }}'
     }
 }
 

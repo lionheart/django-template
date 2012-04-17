@@ -37,8 +37,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),
 )
 
-# TODO: Regenerate this.
-SECRET_KEY = ''
+SECRET_KEY = '{{ secret_key }}'
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -55,7 +54,7 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'goodiebag.urls'
+ROOT_URLCONF = '{{ project_name }}.urls'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

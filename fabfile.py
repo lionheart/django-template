@@ -2,7 +2,7 @@ from fabric import colors
 from fabric.api import *
 from fabric.contrib.project import *
 
-env.app = 'goodiebag'
+env.app = '{{ project_name }}'
 env.dest = "/var/www/%(app)s" % env
 env.use_ssh_config = True
 

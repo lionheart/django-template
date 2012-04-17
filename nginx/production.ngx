@@ -1,18 +1,18 @@
-upstream goodiebag {
-  server unix:/tmp/goodiebag.sock;
+upstream {{ project_name }} {
+  server unix:/tmp/{{ project_name }}.sock;
 }
 
 server {
   listen 80;
 
-  server_name goodiebag.com;
-  root /var/www/goodiebag;
+  server_name {{ project_name }}.com;
+  root /var/www/{{ project_name }};
 
-  access_log /var/log/nginx/goodiebag.log combined;
-  error_log /var/log/nginx/goodiebag.err warn;
+  access_log /var/log/nginx/{{ project_name }}.log combined;
+  error_log /var/log/nginx/{{ project_name }}.err warn;
 
   location / {
-    proxy_pass http://goodiebag;
+    proxy_pass http://{{ project_name }};
     proxy_redirect off;
     proxy_set_header Host $http_host;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -31,7 +31,7 @@ server {
 
   location /media/ {
     access_log off;
-    alias /var/www/goodiebag/media/;
+    alias /var/www/{{ project_name }}/media/;
   }
 
   location = /favicon.ico {

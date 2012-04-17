@@ -15,7 +15,7 @@ fabric==1.4.1
 # AWS
 # boto==2.3.0
 # django-storages==1.1.4
-# django-ses==0.4.0
+django-ses==0.4.1
 
 # ECL
 https://packages.elmcitylabs.com/ecl_django-0.4.16.tar.gz#ecl_django

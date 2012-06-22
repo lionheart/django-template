@@ -157,8 +157,8 @@ DEVSERVER_MODULES = (
 # BROKER_TRANSPORT = "redis"
 # BROKER_URL = "redis://localhost:6379/1"
 
-SESSION_REDIS_PREFIX = "session"
-SESSION_ENGINE = 'redis_sessions.session'
+# SESSION_REDIS_PREFIX = "session"
+# SESSION_ENGINE = 'redis_sessions.session'
 
 try:
     from local_settings import *

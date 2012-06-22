@@ -1,4 +1,6 @@
 - *.db
+- *.pyc
+- *.pyo
 - *.un~
 - .DS_Store
 - .git/
@@ -8,7 +10,6 @@
 - fabfile.py
 - lib/
 - local_settings.pyc
-- media/
 - settings.pyc
 - src/
 - ssl/

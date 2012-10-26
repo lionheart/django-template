@@ -33,3 +33,4 @@ django-statictastic==0.3.2
 
 gitpython
 
+raven

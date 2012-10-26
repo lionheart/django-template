@@ -220,15 +220,15 @@ DEVSERVER_MODULES = (
 try:
     from local_settings import *
 except ImportError:
-    import logging
-    logger = logging.getLogger(__name__)
-    logger.error("Please link the appropriate settings file from the settings folder to `local_settings.py` in the project root.")
+    raise ImportError("""Please link the appropriate settings file from conf/settings to `local_settings.py` in the project root. E.g.
+
+    ({{ project_name }})$ ln -s conf/settings/local.py local_settings.py""")
 
 # Uncomment if using django-celery
 # try:
 #     import celeryconfig
 # except ImportError:
-#     import logging
-#     logger = logging.getLogger(__name__)
-#     logger.error("Please link the appropriate celeryconfig.py file from the settings/celery folder to `celeryconfig.py` in the project root.")
+#    raise ImportError("""Please link the appropriate settings file from conf/celery to `celeryconfig.py` in the project root. E.g.
+#
+#    ({{ project_name }})$ ln -s conf/celery/local.py celeryconfig.py""")
 

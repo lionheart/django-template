@@ -83,36 +83,86 @@ INSTALLED_APPS = (
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
+    'root': {
+        'level': 'INFO',
+        'handlers': ['syslog', 'papertrail', 'sentry', 'console'],
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
     'formatters': {
+        'condensed': {
+            'format': '[%(levelname)s] %(name)s#%(lineno)d: %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'papertrail': {
+            'format': ':[%(levelname)s] %(name)s#%(lineno)d: %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
         'simple': {
-            'format': '[%(levelname)s] %(module)s@%(lineno)s: %(message)s'
+            'format': '%(levelname)s %(message)s'
         },
     },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
+            'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'simple'
+            'formatter': 'condensed'
+        },
+        'syslog': {
+            'level': 'INFO',
+            'address': '/dev/log',
+            'class': 'logging.handlers.SysLogHandler',
+            'formatter': 'condensed',
+            'filters': ['require_debug_false'],
+        },
+        'papertrail': {
+            'level': 'INFO',
+            'class': 'logging.handlers.SysLogHandler',
+            'address': ('logs.papertrailapp.com', 22222),
+            'filters': ['require_debug_false'],
+            'formatter': 'papertrail',
+        },
+        'sentry': {
+            'level': 'ERROR',
+            'class': 'raven.contrib.django.handlers.SentryHandler',
+            'filters': ['require_debug_false'],
         },
     },
-    'loggers': {
-        'app': {
-            'handlers': ['console'],
-            'level': "DEBUG",
-            "propagate": False
+   'loggers': {
+        'sorl': {
+            'handlers': ['syslog', 'console'],
+            'propagate': False,
         },
-        'django.request': {
-            'handlers': ['console', 'mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
+        'raven': {
+            'handlers': ['sentry'],
+            'propagate': False
         },
-    }
+#        'django.db.backends': {
+#            'level': 'INFO',
+#            'propagate': False,
+#            'handlers': ['syslog', 'console', 'sentry'],
+#        },
+#        'django.request': {
+#            'level': 'INFO',
+#            'propagate': False,
+#            'handlers': ['syslog', 'console', 'sentry'],
+#        },
+    },
 }
+
+if not os.path.exists('/dev/log'):
+    del LOGGING['handlers']['syslog']['address']
+    LOGGING['handlers']['syslog']['class'] = 'logging.StreamHandler'
+
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
@@ -143,7 +193,11 @@ DEVSERVER_MODULES = (
 )
 
 # from S3 import CallingFormat
-# AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+# from boto.s3.connection import OrdinaryCallingFormat
+# AWS_CALLING_FORMAT = CallingFormat.PATH
+# AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+# AWS_S3_SECURE_URLS = True
+# AWS_QUERYSTRING_AUTH = False
 
 # AWS_STATIC_STORAGE_BUCKET_NAME = 'static.{{ project_name }}.com'
 # AWS_STATIC_ACCESS_KEY_ID = ''
@@ -167,8 +221,23 @@ DEVSERVER_MODULES = (
 # SESSION_REDIS_PREFIX = "session"
 # SESSION_ENGINE = 'redis_sessions.session'
 
+# Sentry / Raven Configuration
+# RAVEN_CONFIG = {
+#     'dsn': 'https://b2022b456a1d44b3a7a3a2ce6dd11a6c:e336ae25fc0044028aa09a24526f9524@app.getsentry.com/2600'
+# }
+
 try:
     from local_settings import *
-except:
-    pass
+except ImportError:
+    import logging
+    logger = logging.getLogger(__name__)
+    logger.error("Please link the appropriate settings file from the settings folder to `local_settings.py` in the project root.")
+
+# Uncomment if using django-celery
+# try:
+#     import celeryconfig
+# except ImportError:
+#     import logging
+#     logger = logging.getLogger(__name__)
+#     logger.error("Please link the appropriate celeryconfig.py file from the settings/celery folder to `celeryconfig.py` in the project root.")
 

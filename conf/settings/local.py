@@ -1,7 +1,7 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'local.db'
+        'NAME': '{{ project_name }}.db'
     }
 }
 
@@ -12,3 +12,7 @@ CACHES = {
     }
 }
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
+
+STATIC_URL = "/static/"

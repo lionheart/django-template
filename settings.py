@@ -37,6 +37,10 @@ TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),
 )
 
+STATICFILES_DIRS = (
+    os.path.join(BASE, "static"),
+)
+
 SECRET_KEY = '{{ secret_key }}'
 
 TEMPLATE_LOADERS = (
@@ -60,6 +64,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,6 +78,7 @@ INSTALLED_APPS = (
 
     'debug_toolbar',
     'devserver',
+    'statictastic',
 )
 
 LOGGING = {

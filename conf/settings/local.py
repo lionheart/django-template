@@ -1,3 +1,7 @@
+import os
+
+BASE = os.path.abspath(os.path.dirname(__name__))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -15,6 +19,6 @@ CACHES = {
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
-STATIC_URL = "/static/"
 ADMIN_MEDIA_PREFIX = '/static/admin/'
-
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE, "static")

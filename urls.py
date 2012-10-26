@@ -4,10 +4,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
 
-from ecl_django.utils import simple_url
-from ecl_django.utils import template_url
-from ecl_django.utils import home_url
-from ecl_django.utils import status_204
+from plus.utils import simple_url
+from plus.utils import template_url
+from plus.utils import home_url
+from plus.utils import status_204
 
 admin.autodiscover()
 

@@ -17,3 +17,4 @@ STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
 STATIC_URL = "/static/"
 ADMIN_MEDIA_PREFIX = '/static/admin/'
+

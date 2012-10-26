@@ -1,3 +1,3 @@
 To setup, run
 
-    django-admin.py startproject -e ngx --template=https://code.aurora.io/bootstrap/django-1.4.zip project .
+    django-admin.py startproject -e ngx --template=source.bz2 bananadesk

@@ -34,3 +34,7 @@ https://packages.elmcitylabs.com/ecl_django-0.5.6.tar.gz#ecl_django
 # django-celery==2.5.1
 
 django-redis-sessions==0.2.3
+django-statictastic==0.3.2
+
+gitpython
+

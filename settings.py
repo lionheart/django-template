@@ -145,6 +145,10 @@ DEVSERVER_MODULES = (
 # AWS_HEADERS = {
 #         'Cache-Control': "max-age:5, public"
 #     }
+# STATIC_URL = ""
+
+# django-statictastic querystring support
+# COMMIT_SHA = ""
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # AWS_ACCESS_KEY_ID = ''
@@ -153,9 +157,6 @@ DEVSERVER_MODULES = (
 # EMAIL_BACKEND = "django_ses.SESBackend"
 # AWS_SES_ACCESS_KEY_ID = ''
 # AWS_SES_SECRET_ACCESS_KEY = ''
-
-# BROKER_TRANSPORT = "redis"
-# BROKER_URL = "redis://localhost:6379/1"
 
 # SESSION_REDIS_PREFIX = "session"
 # SESSION_ENGINE = 'redis_sessions.session'

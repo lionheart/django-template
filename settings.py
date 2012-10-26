@@ -21,9 +21,8 @@ LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 USE_I18N = False
 USE_L10N = False
+
 MEDIA_ROOT = os.path.join(BASE, "media")
-MEDIA_URL = '/media/'
-ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),

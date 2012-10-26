@@ -13,8 +13,8 @@ django-devserver==0.3.1
 fabric==1.4.1
 
 # AWS
-# boto==2.3.0
 # django-storages==1.1.4
+boto==2.6.0
 django-ses==0.4.1
 
 # Search
@@ -29,7 +29,8 @@ django-ses==0.4.1
 # django-celery==2.5.1
 
 django-redis-sessions==0.2.3
-django-statictastic==0.3.2
+django-statictastic==0.4.0
+django-aurora==0.9
 
 gitpython
 

@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.webdesign',
+    'django.contrib.staticfiles',
     'app',
     'south',
 
@@ -198,9 +199,6 @@ DEVSERVER_MODULES = (
 #     }
 # STATIC_URL = ""
 
-# django-statictastic querystring support
-# COMMIT_SHA = ""
-
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # AWS_ACCESS_KEY_ID = ''
 # AWS_SECRET_ACCESS_KEY = ''
@@ -216,6 +214,9 @@ DEVSERVER_MODULES = (
 # RAVEN_CONFIG = {
 #     'dsn': 'https://b2022b456a1d44b3a7a3a2ce6dd11a6c:e336ae25fc0044028aa09a24526f9524@app.getsentry.com/2600'
 # }
+
+# django-statictastic querystring support
+COMMIT_SHA = ""
 
 try:
     from local_settings import *

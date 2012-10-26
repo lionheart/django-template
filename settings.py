@@ -22,8 +22,6 @@ SITE_ID = 1
 USE_I18N = False
 USE_L10N = False
 
-MEDIA_ROOT = os.path.join(BASE, "media")
-
 TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),
 )
@@ -197,7 +195,6 @@ DEVSERVER_MODULES = (
 # AWS_HEADERS = {
 #         'Cache-Control': "max-age:5, public"
 #     }
-# STATIC_URL = ""
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # AWS_ACCESS_KEY_ID = ''

@@ -4,10 +4,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
 
-from plus.utils import simple_url
-from plus.utils import template_url
-from plus.utils import home_url
-from plus.utils import status_204
+from aurora.utils import simple_url
+from aurora.utils import template_url
+from aurora.utils import home_url
+from aurora.utils import status_204
 
 admin.autodiscover()
 
@@ -17,5 +17,5 @@ urlpatterns = patterns('app.views',
     home_url('home'),
 )
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

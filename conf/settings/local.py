@@ -21,6 +21,5 @@ STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE, "static")
 
 BASE_URL = "http://local.{{ project_name }}.com"

@@ -26,9 +26,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),
 )
 
-STATICFILES_DIRS = (
-    os.path.join(BASE, "static"),
-)
+STATICFILES_DIRS = ()
 
 SECRET_KEY = '{{ secret_key }}'
 
@@ -189,14 +187,12 @@ DEVSERVER_MODULES = (
 # AWS_S3_SECURE_URLS = True
 # AWS_QUERYSTRING_AUTH = False
 
-# AWS_STATIC_STORAGE_BUCKET_NAME = 'static.{{ project_name }}.com'
-# AWS_STATIC_ACCESS_KEY_ID = ''
-# AWS_STATIC_SECRET_ACCESS_KEY = ''
+# AWS_STORAGE_BUCKET_NAME = 'uploads-{{ project_name }}'
+# AWS_STATIC_STORAGE_BUCKET_NAME = 'static-{{ project_name }}'
 # AWS_HEADERS = {
 #         'Cache-Control': "max-age:5, public"
 #     }
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # AWS_ACCESS_KEY_ID = ''
 # AWS_SECRET_ACCESS_KEY = ''
 

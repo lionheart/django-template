@@ -209,9 +209,13 @@ DEVSERVER_MODULES = (
 # }
 
 # django-statictastic querystring support
-import git
-repo = git.Repo('.')
-COMMIT_SHA = repo.head.commit.hexsha
+try:
+    import git
+except ImportError:
+    COMMIT_SHA = ""
+else:
+    repo = git.Repo('.')
+    COMMIT_SHA = repo.head.commit.hexsha
 
 try:
     from local_settings import *

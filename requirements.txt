@@ -29,8 +29,8 @@ django-ses==0.4.1
 # django-celery==2.5.1
 
 django-redis-sessions==0.2.3
-django-statictastic==0.4.0
 django-aurora==0.9
+django-statictastic==0.5.7
 
 gitpython
 

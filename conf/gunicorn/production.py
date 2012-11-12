@@ -1,7 +1,7 @@
 bind = "unix:/tmp/{{ project_name }}.sock"
 workers = 3
 daemon = True
-pidfile = "/var/run/gunicorn/{{ project_name }}.pid"
+pidfile = "/tmp/gunicorn.{{ project_name }}.production.pid"
 loglevel = "error"
 proc_name = "{{ project_name }}"
 worker_class = "gevent"

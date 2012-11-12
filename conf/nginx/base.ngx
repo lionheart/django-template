@@ -1,0 +1,32 @@
+user www-data;
+worker_processes 1;
+worker_rlimit_nofile 8192;
+
+error_log /var/log/nginx/error.log;
+pid /var/run/nginx.pid;
+
+events {
+    worker_connections 2048;
+    # debug_connection 192.168.1.1;
+    # multi_accept on;
+}
+
+http {
+    server_tokens off;
+    include mime.types;
+
+    access_log  /var/log/nginx/access.log;
+
+    sendfile on;
+    tcp_nodelay on;
+
+    gzip on;
+    gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*.ngx;
+
+    #tcp_nopush on;
+    #keepalive_timeout  0;
+}
+

@@ -1,12 +1,14 @@
-bind = "unix:/tmp/{{ project_name }}.sock"
-workers = 3
-daemon = True
+bind = "unix:/tmp/gunicorn.{{ project_name }}.production.sock"
+
+# http://gunicorn.org/design.html#how-many-workers
+workers = 5
+
+# Supervisor needs a non-daemonized process
+daemon = False
+
 pidfile = "/tmp/gunicorn.{{ project_name }}.production.pid"
-loglevel = "error"
-proc_name = "{{ project_name }}"
+loglevel = "warning"
+proc_name = "{{ project_name }}-production"
 worker_class = "gevent"
 debug = False
-logfile = "/var/log/gunicorn/{{ project_name }}.log"
-user = "gunicorn"
-group = "gunicorn"
 

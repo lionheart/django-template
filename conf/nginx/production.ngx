@@ -1,5 +1,7 @@
+proxy_cache_path /var/cache/nginx levels=2:2 keys_zone=maincache:5m max_size=1000m;
+
 upstream {{ project_name }} {
-  server unix:/tmp/{{ project_name }}.sock;
+  server unix:/tmp/gunicorn.{{ project_name }}.production.sock;
 }
 
 server {
@@ -10,6 +12,10 @@ server {
 
   access_log /var/log/nginx/{{ project_name }}.log combined;
   error_log /var/log/nginx/{{ project_name }}.err warn;
+
+  proxy_cache maincache;
+  proxy_cache_valid 200 1m;
+  proxy_cache_use_stale updating;
 
   location / {
     proxy_pass http://{{ project_name }};
@@ -24,14 +30,14 @@ server {
     return 204;
   }
 
-  location /media/admin/ {
+  location /static/admin/ {
     alias /usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/;
     access_log off;
   }
 
-  location /media/ {
+  location /static/ {
     access_log off;
-    alias /var/www/{{ project_name }}/media/;
+    alias /var/www/{{ project_name }}/static/;
   }
 
   location = /favicon.ico {

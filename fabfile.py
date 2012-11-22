@@ -27,7 +27,9 @@ def sync():
 
 def deploy():
     sync()
+    link_files()
     reload_processes()
+    add_commit_sha()
 
 def link_files():
     print(colors.yellow("Linking settings."))
@@ -39,8 +41,9 @@ def link_files():
         sudo("rm -f conf/gunicorn/current.py")
         sudo("ln -s %(label)s.py conf/gunicorn/current.py" % env)
 
-        sudo("rm -f conf/supervisor/current.ini")
-        sudo("ln -s %(label)s.ini conf/supervisor/current.ini" % env)
+        sudo("rm -f conf/supervisor/programs.ini" % env)
+        sudo("ln -s %(label)s.ini conf/supervisor/programs.ini" % env)
+
 
 def reload_processes(reload_type="soft"):
     print(colors.yellow("Reloading processes."))

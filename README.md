@@ -19,14 +19,14 @@ Before doing any of this, you'll need to install Python and pip.
     # wait for a couple of minutes, hopefully nothing goes wrong!
     ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
     ({{ project_name }}) $ ./manage.py syncdb
-    ({{ project_name }}) $ ./manage.py runserver
+    ({{ project_name }}) $ sudo ./manage.py runserver
     Validating models...
     0 errors found
 
     Django version 1.4.2, using settings '{{ project_name }}.settings'
     Running django-devserver 0.3.1
-    Threaded django server is running at http://127.0.0.1:8000/
+    Threaded django server is running at http://0.0.0.0:80/
     Quit the server with CONTROL-C.
 
-Open your browser, navigate to "http://localhost:8000/", and enjoy!
+Open your browser, navigate to "http://local.{{ project_name }}.com", and enjoy!
 

@@ -215,13 +215,7 @@ DEVSERVER_DEFAULT_ADDR = "0.0.0.0"
 DEVSERVER_DEFAULT_PORT = "80"
 
 # django-statictastic querystring support
-try:
-    import git
-except ImportError:
-    COMMIT_SHA = ""
-else:
-    repo = git.Repo('.')
-    COMMIT_SHA = repo.head.commit.hexsha
+COMMIT_SHA = ""
 
 try:
     from local_settings import *

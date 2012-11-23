@@ -1,12 +1,6 @@
-Paste the following URL into your browser and download it to a writable directory:
+To get started, just run the following.
 
-    https://bitbucket.org/aurorasoftware/django-bootstrap/get/django-1.4.tar.bz2
-
-Afterwards, just run the following:
-
-    django-admin.py startproject -e md -e ngx --template=django-1.4.tar.bz2 project_name
-
-After cloning, just run the following:
+    django-admin.py startproject -e md -e ngx -e ini --template=https://github.com/aurorasoftware/django-bootstrap/archive/django-1.4.tar.gz project_name
 
 Getting Started
 ===============

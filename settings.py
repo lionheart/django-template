@@ -16,7 +16,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MANAGERS = ADMINS
-TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = 'UTC'
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 USE_I18N = False
@@ -173,11 +173,14 @@ DEBUG_TOOLBAR_CONFIG = {
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
-DEVSERVER_IGNORED_PREFIXES = ['/media', '/__debug__']
+DEVSERVER_IGNORED_PREFIXES = ['/uploads', '/static', '/__debug__']
 DEVSERVER_MODULES = (
     'devserver.modules.sql.SQLRealTimeModule',
     'devserver.modules.sql.SQLSummaryModule',
     'devserver.modules.profile.ProfileSummaryModule',
+    'devserver.modules.ajax.AjaxDumpModule',
+    'devserver.modules.profile.MemoryUseModule',
+    'devserver.modules.cache.CacheSummaryModule',
 )
 
 # from S3 import CallingFormat

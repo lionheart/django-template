@@ -1,6 +1,6 @@
 To get started, just run the following.
 
-    django-admin.py startproject -e md -e ngx -e ini --template=https://github.com/aurorasoftware/django-bootstrap/archive/django-1.4.tar.gz project_name
+    django-admin.py startproject -e md,ngx,ini --template=https://github.com/aurorasoftware/django-bootstrap/archive/django-1.4.tar.gz project_name
 
 Getting Started
 ===============

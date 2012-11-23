@@ -208,6 +208,9 @@ DEVSERVER_MODULES = (
 #     'dsn': 'https://b2022b456a1d44b3a7a3a2ce6dd11a6c:e336ae25fc0044028aa09a24526f9524@app.getsentry.com/2600'
 # }
 
+DEVSERVER_DEFAULT_ADDR = "0.0.0.0"
+DEVSERVER_DEFAULT_PORT = "80"
+
 # django-statictastic querystring support
 try:
     import git

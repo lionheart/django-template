@@ -33,7 +33,7 @@ raven==2.0.10
 
 django-redis-sessions==0.3.1
 django-aurora==0.9
-django-statictastic==0.5.7
+django-statictastic==0.5.9
 
 # Heroku-specific
 dj-database-url

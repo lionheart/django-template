@@ -1,3 +1,10 @@
+def on_starting(server):
+    from django.core.management import call_command
+    call_command('syncmedia')
+
+import os
+pythonpath = os.path.abspath("..")
+
 bind = "unix:/tmp/gunicorn.{{ project_name }}.production.sock"
 
 # http://gunicorn.org/design.html#how-many-workers

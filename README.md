@@ -1,8 +1,8 @@
 Features
 ========
 
-Requirements
-------------
+Libraries
+---------
 
 Includes a requirements.txt with libraries that promote Django best practices, such as:
 
@@ -22,7 +22,7 @@ manage your SSH keys.
 Configuration
 -------------
 
-Gunicorn, nginx, and supervisor configurations are baked in.
+Baked in gunicorn, nginx, and supervisor configurations.
 
 Get started
 -----------

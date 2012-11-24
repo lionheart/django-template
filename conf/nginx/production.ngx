@@ -13,10 +13,6 @@ server {
   access_log /var/log/nginx/{{ project_name }}.log combined;
   error_log /var/log/nginx/{{ project_name }}.err warn;
 
-  proxy_cache maincache;
-  proxy_cache_valid 200 1m;
-  proxy_cache_use_stale updating;
-
   location / {
     proxy_pass http://{{ project_name }};
     proxy_redirect off;
@@ -33,12 +29,20 @@ server {
   location /static/admin/ {
     alias /usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/;
     access_log off;
+
+    proxy_cache maincache;
+    proxy_cache_valid 200 1m;
+    proxy_cache_use_stale updating;
   }
 
   location /static/ {
     expires max;
     access_log off;
     alias /var/www/{{ project_name }}/static/;
+
+    proxy_cache maincache;
+    proxy_cache_valid 200 1m;
+    proxy_cache_use_stale updating;
   }
 
   location = /favicon.ico {

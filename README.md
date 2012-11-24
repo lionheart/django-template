@@ -38,7 +38,7 @@ You've cloned the repo or started a new project with the startproject command.
 Here's how you actually get started developing. I'm assuming you already have
 pip installed.
 
-1. If pip is installed, the next thing you have to do is install virtualenv
+1. Install virtualenv
 
         pip install virtualenv
 

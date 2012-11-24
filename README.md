@@ -30,7 +30,7 @@ pip installed.
         ({{ project_name }}) $ chmod +x manage.py
         ({{ project_name }}) $ ./manage.py syncdb
 
-6. Run the server!
+6. Start the server.
 
         ({{ project_name }}) $ sudo ./manage.py runserver
         Validating models...

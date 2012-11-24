@@ -8,4 +8,5 @@ build/
 include/
 lib/
 src/
+share/
 local_settings.py

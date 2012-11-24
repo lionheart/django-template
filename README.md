@@ -11,11 +11,11 @@ pip installed.
 
 1. If pip is installed, the next thing you have to do is install virtualenv
 
-    $ pip install virtualenv
+        $ pip install virtualenv
 
 2. Then, start a virtualenv in the project directory.
 
-    $ virtualenv .
+        $ virtualenv .
 
 3. Install the project requirements.
 

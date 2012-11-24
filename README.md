@@ -56,8 +56,9 @@ pip installed.
 
         ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
 
-5. Sync your local database.
+5. Make manage.py executable and sync your local database.
 
+        ({{ project_name }}) $ chmod +x manage.py
         ({{ project_name }}) $ ./manage.py syncdb
 
 6. Run the server!

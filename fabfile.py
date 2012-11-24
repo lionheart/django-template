@@ -44,7 +44,6 @@ def link_files():
         sudo("rm -f conf/supervisor/programs.ini" % env)
         sudo("ln -s %(label)s.ini conf/supervisor/programs.ini" % env)
 
-
 def reload_processes(reload_type="soft"):
     print(colors.yellow("Reloading processes."))
 

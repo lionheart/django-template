@@ -1,7 +1,5 @@
-def on_starting(server):
-    import sys
-    sys.path.append("..")
-
+import os
+pythonpath = os.path.abspath("..")
 bind = "0.0.0.0:8000"
 workers = 3
 daemon = False

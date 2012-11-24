@@ -1,6 +1,5 @@
-def on_starting(server):
-    import sys
-    sys.path.append("..")
+import os
+pythonpath = os.path.abspath("..")
 
 bind = "unix:/tmp/gunicorn.{{ project_name }}.production.sock"
 

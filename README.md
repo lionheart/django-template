@@ -29,7 +29,7 @@ Get started
 
 To start a new Django project called `project_name`, run the following.
 
-    django-admin.py startproject -e md,ngx,ini --template=https://github.com/aurorasoftware/django-bootstrap/archive/django-1.4.zip project_name
+    django-admin.py startproject -e md,ngx,ini --template=https://github.com/aurorasoftware/django-template/archive/django-1.4.zip project_name
 
 Installation
 ============

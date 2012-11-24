@@ -45,6 +45,7 @@ pip installed.
 2. Then, start a virtualenv in the project directory.
 
         $ virtualenv .
+        $ . bin/activate
 
 3. Install the project requirements.
 

@@ -19,27 +19,27 @@ pip installed.
 
 3. Install the project requirements.
 
-    ({{ project_name }}) $ pip install -r requirements.txt
-    # wait for a couple of minutes, hopefully nothing goes wrong!
+        ({{ project_name }}) $ pip install -r requirements.txt
+        # wait for a couple of minutes, hopefully nothing goes wrong!
 
 4. Link the local project settings to local_settings.py.
 
-    ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
+        ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
 
 5. Sync your local database.
 
-    ({{ project_name }}) $ ./manage.py syncdb
+        ({{ project_name }}) $ ./manage.py syncdb
 
 6. Run the server!
 
-    ({{ project_name }}) $ sudo ./manage.py runserver
-    Validating models...
-    0 errors found
+        ({{ project_name }}) $ sudo ./manage.py runserver
+        Validating models...
+        0 errors found
 
-    Django version 1.4.2, using settings '{{ project_name }}.settings'
-    Running django-devserver 0.4.0
-    Threaded django server is running at http://0.0.0.0:80/
-    Quit the server with CONTROL-C.
+        Django version 1.4.2, using settings '{{ project_name }}.settings'
+        Running django-devserver 0.4.0
+        Threaded django server is running at http://0.0.0.0:80/
+        Quit the server with CONTROL-C.
 
 I generally map "local.{{ project_name }}.com" to 127.0.0.0 with my DNS. If you
 haven't yet registered a domain, add the following line to your `/etc/hosts`

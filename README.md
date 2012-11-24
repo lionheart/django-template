@@ -1,3 +1,32 @@
+Features
+========
+
+Requirements
+------------
+
+Includes a requirements.txt with libraries that promote Django best practices, such as:
+
+* South, for database migrations.
+* Django storages, for support with many file storage backends.
+* Fabric, for easy deployments.
+* Django Devserver, for a great replacement to the built in Django runserver command.
+* Django Debug Toolbar, for an easy to use toolbar with fantastic profiling information.
+* Statictastic, for an easy way to sync static media to your storage backends.
+
+Deployment
+----------
+
+Included is a Fabric file that assumes you use your SSH configuration file to
+manage your SSH keys.
+
+Configuration
+-------------
+
+Gunicorn, nginx, and supervisor configurations are baked in.
+
+Get started
+-----------
+
 To start a new Django project called `project_name`, run the following.
 
     django-admin.py startproject -e md,ngx,ini --template=https://github.com/aurorasoftware/django-bootstrap/archive/django-1.4.zip project_name

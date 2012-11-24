@@ -35,3 +35,5 @@ django-redis-sessions==0.3.1
 django-aurora==0.9
 django-statictastic==0.5.7
 
+# Heroku-specific
+dj-database-url

@@ -3,16 +3,8 @@
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '{{ project_name }}',
-        'USER': '{{ project_name }}',
-        'PASSWORD': '{{ project_name }}',
-        'HOST': '127.0.0.1',
-        'PORT': '',
-    }
-}
+import dj_database_url
+DATABASES = {'default': dj_database_url.config()}
 
 CACHES = {
     'default': {

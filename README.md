@@ -76,6 +76,5 @@ file.
 
     127.0.0.1 local.{{ project_name }}.com
 
-After you've done that, open your browser, navigate to "http://local.{{ project_name }}.com/",
-and start developing on your Django project!
+After you've done that, open your browser and navigate to "http://local.{{ project_name }}.com/".
 

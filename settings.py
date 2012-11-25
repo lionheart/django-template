@@ -1,4 +1,5 @@
 import os
+import imp
 
 BASE = os.path.abspath(os.path.dirname(__name__))
 

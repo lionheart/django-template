@@ -184,9 +184,7 @@ DEVSERVER_MODULES = (
     'devserver.modules.cache.CacheSummaryModule',
 )
 
-# from S3 import CallingFormat
 # from boto.s3.connection import OrdinaryCallingFormat
-# AWS_CALLING_FORMAT = CallingFormat.PATH
 # AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 # AWS_S3_SECURE_URLS = True
 # AWS_QUERYSTRING_AUTH = False
@@ -197,8 +195,8 @@ DEVSERVER_MODULES = (
 #         'Cache-Control': "max-age:5, public"
 #     }
 
-# AWS_ACCESS_KEY_ID = ''
-# AWS_SECRET_ACCESS_KEY = ''
+# AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
 # EMAIL_BACKEND = "django_ses.SESBackend"
 # AWS_SES_ACCESS_KEY_ID = ''

@@ -1,1 +1,1 @@
-web: bin/gunicorn_django -c conf/gunicorn/$ENVIRONMENT.py {{ project_name }}/settings.py
+web: bin/gunicorn_django -c conf/gunicorn/production.py settings.py

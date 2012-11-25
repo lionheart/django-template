@@ -37,3 +37,5 @@ django-statictastic==0.5.9
 
 # Heroku-specific
 dj-database-url
+gunicorn
+gevent

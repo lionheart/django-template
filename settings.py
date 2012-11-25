@@ -23,10 +23,10 @@ USE_I18N = False
 USE_L10N = False
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE, "templates"),
+    os.path.join(BASE, "{{ project_name }}", "templates"),
 )
 
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (os.path.join(BASE, "{{ project_name }}", "static"),)
 
 SECRET_KEY = '{{ secret_key }}'
 
@@ -217,12 +217,15 @@ DEVSERVER_DEFAULT_PORT = "80"
 # django-statictastic querystring support
 COMMIT_SHA = ""
 
-try:
-    from local_settings import *
-except ImportError:
-    raise ImportError("""Please link the appropriate settings file from conf/settings to `local_settings.py` in the project root. E.g.
+settings_path = lambda env: os.path.join(BASE, 'conf', 'settings', '{}.py'.format(env))
 
-    ({{ project_name }})$ ln -s conf/settings/local.py local_settings.py""")
+try:
+    config = imp.load_source('local_settings', settings_path(os.environ['APP_ENVIRONMENT']))
+    from local_settings import *
+except KeyError:
+    raise Exception("""Please set your app environment (APP_ENVIRONMENT).""")
+except ImportError:
+    raise Exception("""Please set your app environment (APP_ENVIRONMENT).""")
 
 # Uncomment if using django-celery
 # try:

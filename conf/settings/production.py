@@ -14,7 +14,7 @@ CACHES = {
 }
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
+STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
 # Optionally change to full CDN url
 STATIC_URL = "/static/"

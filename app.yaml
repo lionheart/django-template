@@ -1,0 +1,27 @@
+application: hubdesk1
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+builtins:
+- appstats: on
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /favicon.ico
+  static_files: static/img/favicon.ico
+  upload: static/img/favicon.ico
+
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt
+
+- url: /.*
+  script: main.application
+
+libraries:
+  - name: django
+    version: 1.4

@@ -1,3 +1,4 @@
+import os
 # Django settings for teste project.
 
 BASE = os.path.abspath(os.path.dirname(__name__))
@@ -89,9 +90,8 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = '{{ project_name }}.urls'
+ROOT_URLCONF = 'urls'
 
-# Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'main.application'
 
 TEMPLATE_DIRS = (

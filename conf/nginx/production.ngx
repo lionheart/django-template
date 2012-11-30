@@ -7,6 +7,10 @@ upstream {{ project_name }} {
 server {
   listen 80;
 
+  listen 443 default_server ssl;
+  ssl_certificate ssl/{{ project_name }}.com.crt;
+  ssl_certificate_key ssl/{{ project_name }}-ca.key.nopass;
+
   server_name {{ project_name }}.com;
   root /var/www/{{ project_name }};
 

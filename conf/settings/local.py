@@ -19,8 +19,4 @@ CACHES = {
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
-ADMIN_MEDIA_PREFIX = '/static/admin/'
-STATIC_URL = "/static/"
-MEDIA_URL = "/uploads/"
-
 BASE_URL = "http://local.{{ project_name }}.com"

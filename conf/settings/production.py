@@ -16,8 +16,4 @@ CACHES = {
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
 
-# Optionally change to full CDN url
-STATIC_URL = "https://s3.amazonaws.com/{{ project_name }}-static/"
-ADMIN_MEDIA_PREFIX = "https://s3.amazonaws.com/{{ project_name }}-static/admin/"
-
 BASE_URL = "https://{{ project_name }}.com"

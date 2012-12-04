@@ -9,9 +9,6 @@ sqlparse==0.1.5
 django-debug-toolbar==0.9.4
 django-devserver==0.4.0
 
-# Deployment
-fabric==1.5.1
-
 # AWS
 django-storages==1.1.5
 boto==2.6.0
@@ -23,7 +20,6 @@ django-ses==0.4.1
 # whoosh==2.4.1
 
 # Misc
-gitpython==0.3.2.RC1
 raven==2.0.10
 
 # PIL
@@ -40,4 +36,3 @@ dj-database-url
 
 gunicorn
 gevent
-setproctitle

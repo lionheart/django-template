@@ -1,8 +1,7 @@
-from django.conf import settings
 from django.conf.urls import patterns, include, url
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from aurora.utils import simple_url
 from aurora.utils import template_url
@@ -17,5 +16,5 @@ urlpatterns = patterns('app.views',
     home_url('home'),
 )
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += staticfiles_urlpatterns()
 

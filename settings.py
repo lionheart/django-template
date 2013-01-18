@@ -189,6 +189,7 @@ DEVSERVER_MODULES = (
 # AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 # AWS_S3_SECURE_URLS = True
 # AWS_QUERYSTRING_AUTH = False
+# AWS_GZIP = True
 
 # AWS_STORAGE_BUCKET_NAME = 'uploads-{{ project_name }}'
 # AWS_STATIC_STORAGE_BUCKET_NAME = 'static-{{ project_name }}'

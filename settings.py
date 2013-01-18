@@ -230,7 +230,8 @@ AWS_HEADERS = {
 DEVSERVER_DEFAULT_ADDR = "0.0.0.0"
 DEVSERVER_DEFAULT_PORT = "80"
 
-COMMIT_SHA = ""
+# django-statictastic querystring support
+# COMMIT_SHA = ""
 
 settings_path = lambda env: os.path.join(BASE, 'conf', 'settings', '{}.py'.format(env))
 

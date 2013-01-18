@@ -184,6 +184,13 @@ DEVSERVER_MODULES = (
     'devserver.modules.cache.CacheSummaryModule',
 )
 
+# from S3 import CallingFormat
+# from boto.s3.connection import OrdinaryCallingFormat
+# AWS_CALLING_FORMAT = CallingFormat.PATH
+# AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+# AWS_S3_SECURE_URLS = True
+# AWS_QUERYSTRING_AUTH = False
+# AWS_GZIP = True
 
 from boto.s3.connection import OrdinaryCallingFormat
 AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()

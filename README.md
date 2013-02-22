@@ -3,9 +3,7 @@ For information on how to use this project template, check out the [wiki](https:
 Installation
 ============
 
-You've cloned the repo or started a new project with the startproject command.
-Here's how you actually get started developing. I'm assuming you already have
-pip installed.
+You've cloned the repo or started a new project with the startproject command. Here's how you actually get started developing. I'm assuming you already have pip installed.
 
 1. Install virtualenv
 

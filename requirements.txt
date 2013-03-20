@@ -7,7 +7,7 @@ south==0.7.6
 # Debug Tools
 sqlparse==0.1.5
 django-debug-toolbar==0.9.4
-django-devserver==0.4.0
+# django-devserver==0.4.0
 
 # Deployment
 fabric==1.5.1

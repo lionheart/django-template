@@ -1,20 +1,20 @@
 django==1.5
-psycopg2==2.4.5
-py-bcrypt==0.2
+psycopg2==2.4.6
+py-bcrypt==0.3
 python-memcached==1.48
 south==0.7.6
 
 # Debug Tools
-sqlparse==0.1.5
+sqlparse==0.1.6
 django-debug-toolbar==0.9.4
 https://github.com/dcramer/django-devserver/archive/master.tar.gz#egg=devserver
 
 # Deployment
-fabric==1.5.1
+fabric==1.6.0
 
 # AWS
-django-storages==1.1.5
-boto==2.6.0
+django-storages==1.1.7
+boto==2.8.0
 django-ses==0.4.1
 
 # Search
@@ -24,14 +24,14 @@ django-ses==0.4.1
 
 # Misc
 gitpython==0.3.2.RC1
-raven==2.0.10
+raven==3.2.0
 
 # PIL
 # django-shorturls==1.0.1
 # suds==0.4
 # django-celery==3.0.11
 
-django-redis-sessions==0.3.1
+django-redis-sessions-fork==0.5.2
 django-aurora==0.9
 django-statictastic==0.6.2
 

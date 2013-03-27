@@ -34,14 +34,12 @@ You've cloned the repo or started a new project with the startproject command. H
         Validating models...
         0 errors found
 
-        Django version 1.4.2, using settings '{{ project_name }}.settings'
-        Running django-devserver 0.4.0
+        Django version 1.5, using settings '{{ project_name }}.settings'
+        Running django-devserver 0.5.0
         Threaded django server is running at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
 
-I generally map "local.{{ project_name }}.com" to 127.0.0.0 with my DNS. If you
-haven't yet registered a domain, add the following line to your `/etc/hosts`
-file.
+I generally map "local.{{ project_name }}.com" to 127.0.0.0 with my DNS service. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 
     127.0.0.1 local.{{ project_name }}.com
 

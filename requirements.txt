@@ -7,7 +7,7 @@ south==0.7.6
 # Debug Tools
 sqlparse==0.1.6
 django-debug-toolbar==0.9.4
-https://github.com/dcramer/django-devserver/archive/master.tar.gz#egg=devserver
+django-devserver==0.5.0
 
 # Deployment
 fabric==1.6.0

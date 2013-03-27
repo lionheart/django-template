@@ -1,4 +1,4 @@
-For information on how to use this project template, check out the [wiki](https://github.com/aurorasoftware/django-template/wiki/Django-1.4-Heroku).
+For information on how to use this project template, check out the [wiki](https://github.com/aurorasoftware/django-template/wiki/Django-1.7-Heroku).
 
 Installation
 ============

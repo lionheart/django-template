@@ -23,6 +23,9 @@ django-ses==0.4.1
 gitpython==0.3.2.RC1
 raven==3.2.0
 
+# Fixes https://github.com/jmoiron/johnny-cache/pull/11 for Django 1.5
+https://github.com/jmoiron/johnny-cache/archive/37e75019625979487f17b47050da7f0af3fea42c.zip
+
 # PIL
 # django-shorturls==1.0.1
 # suds==0.4

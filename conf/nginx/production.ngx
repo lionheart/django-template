@@ -1,28 +1,24 @@
 proxy_cache_path /var/cache/nginx levels=2:2 keys_zone=maincache:5m max_size=1000m;
 
+pagespeed on;
+
+pagespeed FileCachePath /var/ngx_pagespeed_cache;
+pagespeed Domain http://{{ project_name }}.com;
+pagespeed Domain http://static.{{ project_name }}.com;
+pagespeed LoadFromFile http://static.{{ project_name }}.com/static/ /var/www/{{ project_name }}/collected/;
+# pagespeed MapRewriteDomain XXXXXXXXXX.cloudfront.net static.{{ project_name }}.com;
+
 upstream {{ project_name }} {
   server unix:/tmp/gunicorn.{{ project_name }}.production.sock;
 }
 
 server {
   listen 80;
-
-  listen 443 default_server ssl;
-  ssl_certificate ssl/{{ project_name }}.com.crt;
-  ssl_certificate_key ssl/{{ project_name }}-ca.key.nopass;
-
-  server_name {{ project_name }}.com;
+  server_name static.{{ project_name }}.com;
   root /var/www/{{ project_name }};
 
-  access_log /var/log/nginx/{{ project_name }}.log combined;
-  error_log /var/log/nginx/{{ project_name }}.err warn;
-
-  location / {
-    proxy_pass http://{{ project_name }};
-    proxy_redirect off;
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
+  access_log /var/log/nginx/{{ project_name }}-static.log combined;
+  error_log /var/log/nginx/{{ project_name }}-static.err warn;
 
   location /robots.txt { }
 
@@ -52,6 +48,28 @@ server {
   location = /favicon.ico {
     access_log off;
     empty_gif;
+  }
+
+server {
+  listen 80;
+
+  listen 443 default_server ssl;
+  ssl_certificate ssl/{{ project_name }}.com.crt;
+  ssl_certificate_key ssl/{{ project_name }}-ca.key.nopass;
+
+  server_name {{ project_name }}.com;
+  root /var/www/{{ project_name }};
+
+  access_log /var/log/nginx/{{ project_name }}.log combined;
+  error_log /var/log/nginx/{{ project_name }}.err warn;
+
+  location / {
+    proxy_pass http://{{ project_name }};
+    proxy_redirect off;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    add_header X-Frame-Options SAMEORIGIN;
   }
 }
 

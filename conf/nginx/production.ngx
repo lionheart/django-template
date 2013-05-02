@@ -6,7 +6,10 @@ pagespeed FileCachePath /var/ngx_pagespeed_cache;
 pagespeed Domain http://{{ project_name }}.com;
 pagespeed Domain http://static.{{ project_name }}.com;
 pagespeed LoadFromFile http://static.{{ project_name }}.com/static/ /var/www/{{ project_name }}/collected/;
-# pagespeed MapRewriteDomain XXXXXXXXXX.cloudfront.net static.{{ project_name }}.com;
+
+# Change example.cdn.net to a CDN with root endpoint set to 
+# static.{{ project_name }}.com
+pagespeed MapRewriteDomain example.cdn.net static.{{ project_name }}.com;
 
 upstream {{ project_name }} {
   server unix:/tmp/gunicorn.{{ project_name }}.production.sock;

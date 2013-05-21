@@ -37,6 +37,8 @@ pip install virtualenv
 sudo -u ubuntu mkdir /home/ubuntu/environments/{{ project_name }}
 sudo -u ubuntu virtualenv /home/ubuntu/environments/{{ project_name }}
 pip install supervisor
+pip install django
+pip install setproctitle
 
 sudo gem install --no-rdoc --no-ri compass
 sudo gem install --no-rdoc --no-ri oily_png

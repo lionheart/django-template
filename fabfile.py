@@ -41,6 +41,9 @@ def link_files():
         sudo("rm -f conf/gunicorn/current.py")
         sudo("ln -s %(label)s.py conf/gunicorn/current.py" % env)
 
+        sudo("rm -f celeryconfig.py")
+        sudo("ln -s conf/settings/celery/%(label)s.py celeryconfig.py" % env)
+
         sudo("rm -f conf/supervisor/programs.ini" % env)
         sudo("ln -s %(label)s.ini conf/supervisor/programs.ini" % env)
 

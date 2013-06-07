@@ -1,0 +1,9 @@
+BROKER_URL = "redis://127.0.0.1:6379/0"
+
+CELERYD_HIJACK_ROOT_LOGGER = False
+CELERY_IMPORTS = ("app.tasks",)
+
+# CELERY_RESULT_BACKEND = "redis"
+
+CELERY_ROUTES = {}
+

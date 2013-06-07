@@ -68,6 +68,8 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'devserver',
     'statictastic',
+    # Uncomment if using Celery
+    # 'djcelery',
 )
 
 LOGGING = {

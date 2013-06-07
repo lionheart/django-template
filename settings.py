@@ -67,6 +67,8 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'devserver',
     'statictastic',
+    # Uncomment if using Celery
+    # 'djcelery',
 )
 
 LOGGING = {
@@ -227,9 +229,11 @@ except ImportError:
 
 # Uncomment if using django-celery
 # try:
+#     import djcelery
+#     djcelery.setup_loader()
 #     import celeryconfig
 # except ImportError:
-#    raise ImportError("""Please link the appropriate settings file from conf/celery to `celeryconfig.py` in the project root. E.g.
+#    raise ImportError("""Please link the appropriate settings file from conf/settings/celery to `celeryconfig.py` in the project root. E.g.
 #
-#    ({{ project_name }})$ ln -s conf/celery/local.py celeryconfig.py""")
+#    ({{ project_name }})$ ln -s conf/settings/celery/local.py celeryconfig.py""")
 

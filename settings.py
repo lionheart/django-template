@@ -26,7 +26,8 @@ TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),
 )
 
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (os.path.join(BASE, "static"),)
+STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 

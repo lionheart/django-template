@@ -28,6 +28,7 @@ TEMPLATE_DIRS = (
 )
 
 STATICFILES_DIRS = (os.path.join(BASE, "{{ project_name }}", "static"),)
+STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 

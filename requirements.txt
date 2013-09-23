@@ -1,4 +1,4 @@
-django==1.5
+django==1.5.4
 psycopg2==2.4.6
 py-bcrypt==0.3
 python-memcached==1.48

@@ -1,13 +1,13 @@
-django==1.5.5
+django==1.6.2
 psycopg2==2.4.6
-py-bcrypt==0.3
+py-bcrypt==0.4
 python-memcached==1.48
-south==0.7.6
+south==0.8.4
 
 # Debug Tools
 sqlparse==0.1.6
-django-debug-toolbar==0.9.4
-django-devserver==0.5.0
+django-debug-toolbar==1.0.1
+django-devserver==0.7.0
 
 # AWS
 django-storages==1.1.7
@@ -32,7 +32,7 @@ https://github.com/jmoiron/johnny-cache/archive/37e75019625979487f17b47050da7f0a
 # django-celery==3.0.11
 
 django-redis-sessions-fork==0.5.2
-django-aurora==0.9
+django-lionheart-helpers==1.0.5
 django-statictastic==0.6.2
 
 # Heroku-specific
@@ -40,3 +40,4 @@ dj-database-url
 
 gunicorn
 gevent
+django-localflavor==1.0

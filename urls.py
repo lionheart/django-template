@@ -3,10 +3,10 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from aurora.utils import simple_url
-from aurora.utils import template_url
-from aurora.utils import home_url
-from aurora.utils import status_204
+from lionheart.utils import simple_url
+from lionheart.utils import template_url
+from lionheart.utils import home_url
+from lionheart.utils import status_204
 
 admin.autodiscover()
 

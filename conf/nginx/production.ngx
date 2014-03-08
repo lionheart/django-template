@@ -52,6 +52,7 @@ server {
     access_log off;
     empty_gif;
   }
+}
 
 server {
   listen 80;

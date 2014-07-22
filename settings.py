@@ -1,6 +1,9 @@
 import os
 import imp
 
+# from S3 import CallingFormat
+# from boto.s3.connection import OrdinaryCallingFormat
+
 BASE = os.path.abspath(os.path.dirname(__name__))
 
 DEBUG = True
@@ -13,6 +16,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.media",
+    "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
 )
 
@@ -38,6 +42,8 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'johnny.middleware.LocalStoreClearMiddleware',
+    'johnny.middleware.QueryCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -47,7 +53,7 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = '{{ project_name }}.urls'
+ROOT_URLCONF = 'urls'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -69,8 +75,10 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'devserver',
     'statictastic',
-    # Uncomment if using Celery
+    # 'django_object_actions',
+    # 'sorl.thumbnail',
     # 'djcelery',
+    # 'raven.contrib.django.raven_compat',
 )
 
 LOGGING = {
@@ -155,10 +163,9 @@ if not os.path.exists('/dev/log'):
     del LOGGING['handlers']['syslog']['address']
     LOGGING['handlers']['syslog']['class'] = 'logging.StreamHandler'
 
-
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login'
-LOGOUT_URL = '/logout'
+LOGIN_URL = '/account/login'
+LOGOUT_URL = '/account/logout'
 
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.versions.VersionsPanel',
@@ -181,18 +188,14 @@ DEBUG_TOOLBAR_CONFIG = {
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
-DEVSERVER_IGNORED_PREFIXES = ['/uploads', '/static', '/__debug__']
+DEVSERVER_IGNORED_PREFIXES = ['/static', '/media', '/__debug__']
 DEVSERVER_MODULES = (
-    'devserver.modules.sql.SQLRealTimeModule',
     'devserver.modules.sql.SQLSummaryModule',
     'devserver.modules.profile.ProfileSummaryModule',
-    'devserver.modules.ajax.AjaxDumpModule',
-    'devserver.modules.profile.MemoryUseModule',
-    'devserver.modules.cache.CacheSummaryModule',
 )
 
-# from S3 import CallingFormat
-# from boto.s3.connection import OrdinaryCallingFormat
+# Uncomment imports at top to enable S3 integration
+#
 # AWS_CALLING_FORMAT = CallingFormat.PATH
 # AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 # AWS_S3_SECURE_URLS = True
@@ -229,9 +232,10 @@ AWS_HEADERS = {
 # SESSION_REDIS_PREFIX = "session"
 # SESSION_ENGINE = 'redis_sessions.session'
 
-# Sentry / Raven Configuration
+# SENTRY_PUBLIC_KEY = ""
+# SENTRY_SECRET_KEY = ""
 # RAVEN_CONFIG = {
-#     'dsn': 'https://b2022b456a1d44b3a7a3a2ce6dd11a6c:e336ae25fc0044028aa09a24526f9524@app.getsentry.com/2600'
+#     'dsn': "https://{}:{}@app.getsentry.com/4195".format(SENTRY_PUBLIC_KEY, SENTRY_SECRET_KEY)
 # }
 
 DEVSERVER_DEFAULT_ADDR = "0.0.0.0"

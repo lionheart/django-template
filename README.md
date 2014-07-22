@@ -34,8 +34,8 @@ You've cloned the repo or started a new project with the startproject command. H
         Validating models...
         0 errors found
 
-        Django version 1.5, using settings '{{ project_name }}.settings'
-        Running django-devserver 0.5.0
+        Django version 1.6.5, using settings '{{ project_name }}.settings'
+        Running django-devserver 0.8.0
         Threaded django server is running at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
 

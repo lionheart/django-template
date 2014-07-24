@@ -4,7 +4,7 @@ import imp
 # from S3 import CallingFormat
 # from boto.s3.connection import OrdinaryCallingFormat
 
-BASE = os.path.abspath(os.path.dirname(__name__))
+BASE = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

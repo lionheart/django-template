@@ -1,8 +1,7 @@
-django==1.6.5
+django==1.7
 psycopg2==2.5.3
 py-bcrypt==0.4
 python-memcached==1.48
-south==1.0
 
 # Debug Tools
 sqlparse==0.1.6

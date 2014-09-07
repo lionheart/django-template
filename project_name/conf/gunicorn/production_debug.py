@@ -12,4 +12,3 @@ worker_class = "gevent"
 debug = True
 
 django_settings = "{{ project_name }}.settings"
-

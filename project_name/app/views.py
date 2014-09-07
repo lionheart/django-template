@@ -9,4 +9,3 @@ logger = logging.getLogger(__name__)
 @render
 def home(request):
     return {}
-

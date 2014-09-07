@@ -7,4 +7,3 @@ pidfile = "/tmp/{{ project_name }}.pid"
 worker_class = "gevent"
 debug = True
 django_settings = "{{ project_name }}.settings"
-

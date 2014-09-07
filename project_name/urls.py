@@ -19,4 +19,3 @@ urlpatterns = patterns('app.views',
 )
 
 urlpatterns += staticfiles_urlpatterns()
-

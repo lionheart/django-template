@@ -70,7 +70,6 @@ INSTALLED_APPS = (
     'django.contrib.webdesign',
     'django.contrib.staticfiles',
     'app',
-    'south',
 
     'debug_toolbar',
     'devserver',

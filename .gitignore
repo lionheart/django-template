@@ -10,3 +10,4 @@ lib/
 src/
 share/
 local_settings.py
+.Python

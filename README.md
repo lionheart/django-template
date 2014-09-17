@@ -23,20 +23,19 @@ You've cloned the repo or started a new project with the startproject command. H
 
         ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
 
-5. Make manage.py executable and sync your local database.
+5. Sync your local database.
 
         ({{ project_name }}) $ chmod +x manage.py
-        ({{ project_name }}) $ ./manage.py syncdb
+        ({{ project_name }}) $ ./manage.py migrate
 
 6. Start the server.
 
-        ({{ project_name }}) $ sudo ./manage.py runserver
-        Validating models...
-        0 errors found
+        ({{ project_name }}) $ sudo ./manage.py runserver 0.0.0.0:80
+        Performing system checks...
 
-        Django version 1.6.5, using settings '{{ project_name }}.settings'
-        Running django-devserver 0.8.0
-        Threaded django server is running at http://0.0.0.0:80/
+        September 17, 2014
+        Django version 1.7, using settings 'settings'
+        Starting development server at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
 
 I generally map "local.{{ project_name }}.com" to 127.0.0.0 with my DNS service. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.

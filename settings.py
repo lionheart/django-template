@@ -32,7 +32,7 @@ USE_L10N = True
 USE_TZ = True
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE, "{{ project_name }}", "templates"),
+    os.path.join(BASE, "templates"),
 )
 
 STATICFILES_DIRS = (os.path.join(BASE, "{{ project_name }}", "static"),)

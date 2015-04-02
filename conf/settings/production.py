@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-DEBUG = False
+import os
+
+DEBUG = 'DEBUG' in os.environ
 TEMPLATE_DEBUG = DEBUG
 
 import dj_database_url

@@ -40,14 +40,14 @@ STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 
+ALLOWED_HOSTS = [".herokuapp.com"]
+
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
-    'johnny.middleware.LocalStoreClearMiddleware',
-    'johnny.middleware.QueryCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

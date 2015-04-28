@@ -1,6 +1,7 @@
 from fabric import colors
 from fabric.api import *
 from fabric.contrib.project import *
+from fabric.contrib.files import sed, exists
 
 import git
 
@@ -22,8 +23,8 @@ def sync():
         with cd(env.dest):
             run("compass compile")
 
-            with prefix(". /home/ubuntu/environments/%(app)s/bin/activate" % env):
-                run("%(dest)s/manage.py syncmedia" % env)
+#            with prefix(". /home/ubuntu/environments/%(app)s/bin/activate" % env):
+#                run("%(dest)s/manage.py syncmedia" % env)
 
 def deploy():
     sync()
@@ -33,7 +34,7 @@ def deploy():
 
 def link_files():
     print(colors.yellow("Linking settings."))
-    env.label = env.host_string.replace("%(app)s-", "")
+    env.label = env.host_string.replace("%(app)s-" % env, "")
     with cd(env.dest):
         sudo("rm -f local_settings.py")
         sudo("ln -s conf/settings/%(label)s.py local_settings.py" % env)
@@ -50,7 +51,7 @@ def link_files():
 def reload_processes(reload_type="soft"):
     print(colors.yellow("Reloading processes."))
 
-    env.label = env.host_string.replace("%(app)s-", "")
+    env.label = env.host_string.replace("%(app)s-" % env, "")
     with cd(env.dest):
         sudo("kill -HUP `cat /tmp/gunicorn.%(app)s.%(label)s.pid`" % env)
 

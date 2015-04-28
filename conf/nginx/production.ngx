@@ -17,17 +17,6 @@ upstream {{ project_name }} {
 
 server {
   listen 80;
-
-  # List any redirected domains here.
-  # server_name example.com;
-
-  location / {
-    rewrite ^ https://{{ project_name }}.com$request_uri? permanent;
-  }
-}
-
-server {
-  listen 80;
   server_name static.{{ project_name }}.com;
   root /var/www/{{ project_name }};
 

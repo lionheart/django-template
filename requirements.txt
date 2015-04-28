@@ -29,7 +29,7 @@ https://github.com/jmoiron/johnny-cache/archive/37e75019625979487f17b47050da7f0a
 # django-celery==3.0.11
 
 django-redis-sessions-fork==0.5.2
-django-lionheart-helpers==1.0.5
+django-lionheart-helpers==1.3
 django-statictastic==0.6.2
 
 django-localflavor==1.0

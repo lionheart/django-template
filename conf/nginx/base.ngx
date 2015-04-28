@@ -24,7 +24,7 @@ http {
 
     # http://wiki.nginx.org/HttpGzipModule#gzip_disable
     gzip_disable "msie6";
-    gzip_types text/javascript text/css text/plain text/xml application/xml application/xml+rss text/javascript application/x-javascript;
+    gzip_types text/css text/plain text/xml application/xml application/xml+rss text/javascript application/x-javascript;
 
     include /etc/nginx/conf.d/*.conf;
     include /etc/nginx/sites-enabled/*.ngx;

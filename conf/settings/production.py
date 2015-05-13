@@ -1,20 +1,14 @@
 # -*- coding: utf-8 -*-
 
-DEBUG = False
+import os
+
+DEBUG = 'DEBUG' in os.environ
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = [".{{ product_name }}.com"]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '{{ project_name }}',
-        'USER': '{{ project_name }}',
-        'PASSWORD': '{{ project_name }}',
-        'HOST': '127.0.0.1',
-        'PORT': '',
-    }
-}
+import dj_database_url
+DATABASES = {'default': dj_database_url.config()}
 
 CACHES = {
     'default': {
@@ -25,9 +19,5 @@ CACHES = {
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
-
-# Optionally change to full CDN url
-STATIC_URL = "/static/"
-ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 BASE_URL = "https://{{ project_name }}.com"

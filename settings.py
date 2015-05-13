@@ -1,4 +1,5 @@
 import os
+import imp
 # from S3 import CallingFormat
 # from boto.s3.connection import OrdinaryCallingFormat
 
@@ -33,12 +34,12 @@ TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),
 )
 
-STATICFILES_DIRS = (os.path.join(BASE, "static"),)
+STATICFILES_DIRS = (os.path.join(BASE, "{{ project_name }}", "static"),)
 STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapp.com"]
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -50,6 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -176,6 +178,7 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.request.RequestPanel',
     'debug_toolbar.panels.sql.SQLPanel',
     'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
     'debug_toolbar.panels.cache.CachePanel',
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
@@ -197,19 +200,30 @@ DEVSERVER_MODULES = (
 # Uncomment imports at top to enable S3 integration
 #
 # AWS_CALLING_FORMAT = CallingFormat.PATH
-# AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
-# AWS_S3_SECURE_URLS = True
-# AWS_QUERYSTRING_AUTH = False
 # AWS_GZIP = True
 
-# AWS_STORAGE_BUCKET_NAME = 'uploads-{{ project_name }}'
-# AWS_STATIC_STORAGE_BUCKET_NAME = 'static-{{ project_name }}'
-# AWS_HEADERS = {
-#         'Cache-Control': "max-age:5, public"
-#     }
+from boto.s3.connection import OrdinaryCallingFormat
+AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+AWS_S3_SECURE_URLS = True
+AWS_QUERYSTRING_AUTH = False
 
-# AWS_ACCESS_KEY_ID = ''
-# AWS_SECRET_ACCESS_KEY = ''
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+if AWS_STORAGE_BUCKET_NAME:
+    # Optionally change to full CDN url
+    STATIC_URL = "https://s3.amazonaws.com/{}/".format(AWS_STORAGE_BUCKET_NAME)
+    ADMIN_MEDIA_PREFIX = "https://s3.amazonaws.com/{}/admin/".format(AWS_STORAGE_BUCKET_NAME)
+else:
+    ADMIN_MEDIA_PREFIX = '/static/admin/'
+    STATIC_URL = "/static/"
+    MEDIA_URL = "/uploads/"
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+
+AWS_STATIC_STORAGE_BUCKET_NAME = os.environ.get("AWS_STATIC_STORAGE_BUCKET_NAME")
+AWS_HEADERS = {
+        'Cache-Control': "max-age:5, public"
+    }
 
 # EMAIL_BACKEND = "django_ses.SESBackend"
 # AWS_SES_ACCESS_KEY_ID = ''
@@ -230,12 +244,15 @@ DEVSERVER_DEFAULT_PORT = "80"
 # django-statictastic querystring support
 COMMIT_SHA = ""
 
-try:
-    from local_settings import *
-except ImportError:
-    raise ImportError("""Please link the appropriate settings file from conf/settings to `local_settings.py` in the project root. E.g.
+settings_path = lambda env: os.path.join(BASE, 'conf', 'settings', '{}.py'.format(env))
 
-    ({{ project_name }})$ ln -s conf/settings/local.py local_settings.py""")
+try:
+    config = imp.load_source('local_settings', settings_path(os.environ['APP_ENVIRONMENT']))
+    from local_settings import *
+except KeyError:
+    raise Exception("""Please set your app environment (APP_ENVIRONMENT).""")
+except ImportError:
+    raise Exception("""Please set your app environment (APP_ENVIRONMENT).""")
 
 # Uncomment if using django-celery
 # try:

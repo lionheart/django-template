@@ -1,4 +1,4 @@
-For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.8).
+For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.8-Heroku).
 
 Installation
 ============
@@ -11,8 +11,8 @@ You've cloned the repo or started a new project with the startproject command. H
 
 2. Then, start a virtualenv in the project directory.
 
-        $ virtualenv .
-        $ . bin/activate
+        $ virtualenv venv
+        $ . venv/bin/activate
 
 3. Install the project requirements.
 

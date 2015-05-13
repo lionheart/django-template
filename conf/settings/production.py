@@ -5,7 +5,7 @@ import os
 DEBUG = 'DEBUG' in os.environ
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = [".{{ product_name }}.com"]
+ALLOWED_HOSTS = [".{{ product_name }}.com", "{{ project_name }}.herokuapp.com"]
 
 import dj_database_url
 DATABASES = {'default': dj_database_url.config()}

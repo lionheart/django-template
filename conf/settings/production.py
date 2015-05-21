@@ -17,7 +17,11 @@ CACHES = {
     }
 }
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
+# Uncomment if you'd like to use S3 for static file storage.
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
 
-BASE_URL = "https://{{ project_name }}.com"
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
+
+BASE_URL = "https://{{ project_name }}.herokuapp.com"

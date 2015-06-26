@@ -34,3 +34,4 @@ django-statictastic==0.6.2
 
 django-localflavor==1.0
 gunicorn==18.0
+livereload

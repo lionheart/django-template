@@ -72,7 +72,7 @@ INSTALLED_APPS = (
     'django.contrib.webdesign',
     'django.contrib.staticfiles',
     'app',
-
+    'livereload',
     'debug_toolbar',
     'devserver',
     'statictastic',

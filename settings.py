@@ -72,8 +72,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.webdesign',
     'django.contrib.staticfiles',
-    'app',
 
+    'app',
     'devserver',
     'statictastic',
     # 'django_object_actions',

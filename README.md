@@ -23,24 +23,37 @@ You've cloned the repo or started a new project with the startproject command. H
 
         ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
 
-5. Sync your local database.
+5. Make your local database.
+
+        psql -d postgres
+        create role {{ your_role_name }} with login encrypted password '{{ your_password }}';
+        create database {{ your_database_name }} with owner {{ your_role_name }};
+
+6. Sync your local database.
 
         ({{ project_name }}) $ chmod +x manage.py
         ({{ project_name }}) $ ./manage.py migrate
 
-6. Start the server.
-
-        ({{ project_name }}) $ sudo ./manage.py runserver 0.0.0.0:80
+7. Start the server.
+    ####With runserver
+        ({{ project_name }}) $ sudo APP_ENVIRONMENT='local' ./manage.py runserver 0.0.0.0:80
         Performing system checks...
 
         September 17, 2014
         Django version 1.8, using settings 'settings'
         Starting development server at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
+    ####With livereload
+        ({{ project_name }}) $ sudo APP_ENVIRONMENT='local' ./manage.py livereload
 
-I generally map "local.{{ project_name }}.com" to 127.0.0.0 with my DNS service. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
+I generally map "local.{{ your_project_name }}.com" to 127.0.0.0 with my DNS service. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 
-    127.0.0.1 local.{{ project_name }}.com
+    127.0.0.1 local.{{ your_project_name }}.com
 
-After you've done that, open your browser and navigate to "http://local.{{ project_name }}.com/".
+After you've done that, open your browser and navigate to "http://local.{{ your_project_name }}.com/".
 
+
+PostgreSQL Setup
+================
+
+Here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system.

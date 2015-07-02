@@ -30,9 +30,7 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
-ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATIC_URL = "/static/"
-MEDIA_URL = "/uploads/"
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/app-messages'

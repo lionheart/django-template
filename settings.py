@@ -190,11 +190,8 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 if AWS_STORAGE_BUCKET_NAME:
     # Optionally change to full CDN url
     STATIC_URL = "https://s3.amazonaws.com/{}/".format(AWS_STORAGE_BUCKET_NAME)
-    ADMIN_MEDIA_PREFIX = "https://s3.amazonaws.com/{}/admin/".format(AWS_STORAGE_BUCKET_NAME)
 else:
-    ADMIN_MEDIA_PREFIX = '/static/admin/'
     STATIC_URL = "/static/"
-    MEDIA_URL = "/uploads/"
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")

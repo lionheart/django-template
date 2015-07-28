@@ -1,7 +1,7 @@
 django==1.8.2
 psycopg2==2.5.3
 py-bcrypt==0.4
-python-memcached==1.48
+python-memcached==1.53
 
 # Debug Tools
 sqlparse==0.1.6
@@ -31,5 +31,5 @@ django-localflavor==1.0
 # Heroku-specific
 dj-database-url
 
-gunicorn
+gunicorn==18.0
 gevent

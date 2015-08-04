@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -f git_config/configure.sh ]; then
+    sh git_config/configure.sh
+else
+    exit 1
+fi
+
+git_config/check_pep8_compliance.sh

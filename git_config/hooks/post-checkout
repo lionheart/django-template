@@ -1,0 +1,52 @@
+#!/bin/sh
+
+if [ -f git_config/configure.sh ]; then
+  sh git_config/configure.sh
+fi
+
+echo "Deleting *.pyc files"
+find app -name "*.pyc" -type f | xargs rm
+
+MIGRATION_CHANGES=`git diff --name-status $1..$2 app/migrations/`
+if ! [ -z "$MIGRATION_CHANGES" ]; then
+    echo "The database schema has changed since the previous checkout. You may need to migrate the database to avoid data consistency issues."
+    echo ""
+    printf "$MIGRATION_CHANGES\n"
+    echo ""
+fi
+
+# Check if the requirements file has been updated.
+REQUIREMENTS_UPDATE=`git diff --name-only $1..$2 requirements.txt`
+if ! [ -z "$REQUIREMENTS_UPDATE" ]; then
+    echo "Requirements have changed since the previous checkout."
+    echo ""
+    pip install -qr requirements.txt
+fi
+
+# Check if NPM modules have been updated.
+JS_UPDATE=`git diff --name-only $1..$2 package.json`
+if ! [ -z "$JS_UPDATE" ]; then
+    echo "NPM modules have changed since the previous checkout."
+    echo ""
+    npm install
+fi
+
+# Check if gems have been updated.
+GEM_UPDATE=`git diff --name-only $1..$2 Gemfile`
+if ! [ -z "$GEM_UPDATE" ]; then
+    echo "Gems have changed since the previous checkout."
+    echo ""
+    bundle install
+fi
+
+if ! hash js-beautify; then
+    echo "Installing js-beautify."
+    echo ""
+    npm install js-beautify -g
+fi
+
+if ! hash jscs; then
+    echo "Installing jscs."
+    echo ""
+    npm install jscs -g
+fi

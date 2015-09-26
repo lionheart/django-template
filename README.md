@@ -56,7 +56,7 @@ After you've done that, open your browser and navigate to "http://local.{{ your_
 PostgreSQL Setup
 ================
 
-If you have Homebrew installed:
+If you're on a Mac and have [Homebrew](https://github.com/homebrew/homebrew) installed:
 
     brew install postgresql
 

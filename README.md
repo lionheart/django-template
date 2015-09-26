@@ -25,9 +25,18 @@ You've cloned the repo or started a new project with the startproject command. H
 
 5. Make your local database.
 
-        psql -d postgres
-        create role {{ your_role_name }} with login encrypted password '{{ your_password }}';
-        create database {{ your_database_name }} with owner {{ your_role_name }};
+        $ psql
+        postgres# CREATE ROLE {{ your_role_name }} WITH LOGIN ENCRYPTED PASSWORD '{{ your_password }}';
+        postgres# CREATE DATABASE {{ your_database_name }} WITH OWNER {{ your_role_name }};
+
+5a. If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist`, just do the following to save yourself from having to write `--user postgres` for every PostgreSQL command. If, say, your username is `dan`, you'd do the following:
+
+        # Create a superuser named `dan`
+        $ createuser -s dan
+        # Create a database for this user to log into.
+        $ createdb -O dan dan
+
+    After doing this, re-run step 5.
 
 6. Sync your local database.
 

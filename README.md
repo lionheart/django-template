@@ -36,7 +36,7 @@ You've cloned the repo or started a new project with the startproject command. H
 
     After doing this, re-run the psql commands in step 5.
 
-6. Run migrations for your local database.
+6. Make manage.py executable and run migrations.
 
         ({{ project_name }}) $ chmod +x manage.py
         ({{ project_name }}) $ ./manage.py migrate

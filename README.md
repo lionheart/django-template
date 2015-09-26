@@ -29,12 +29,12 @@ You've cloned the repo or started a new project with the startproject command. H
         postgres# CREATE ROLE {{ your_role_name }} WITH LOGIN ENCRYPTED PASSWORD '{{ your_password }}';
         postgres# CREATE DATABASE {{ your_database_name }} WITH OWNER {{ your_role_name }};
 
-5a. If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist`, just do the following to save yourself from having to write `--user postgres` for every PostgreSQL command. If, say, your username is `dan`, you'd do the following:
+    Note: If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist`, just do the following to save yourself from having to write `--user postgres` for every PostgreSQL command. If, say, your username is `dan`, you'd do the following:
 
-        # Create a superuser named `dan`
-        $ createuser -s dan
-        # Create a database for this user to log into.
-        $ createdb -O dan dan
+            # Create a superuser named `dan`
+            $ createuser -s dan
+            # Create a database for this user to log into.
+            $ createdb -O dan dan
 
     After doing this, re-run step 5.
 
@@ -44,7 +44,9 @@ You've cloned the repo or started a new project with the startproject command. H
         ({{ project_name }}) $ ./manage.py migrate
 
 7. Start the server.
-    ####With runserver
+
+    *With runserver*
+
         ({{ project_name }}) $ sudo APP_ENVIRONMENT='local' ./manage.py runserver 0.0.0.0:80
         Performing system checks...
 
@@ -52,7 +54,9 @@ You've cloned the repo or started a new project with the startproject command. H
         Django version 1.8, using settings 'settings'
         Starting development server at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
-    ####With livereload
+
+    *With livereload*
+
         ({{ project_name }}) $ sudo APP_ENVIRONMENT='local' ./manage.py livereload
 
 I generally map "local.{{ your_project_name }}.com" to 127.0.0.0 with my DNS service. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.

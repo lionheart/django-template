@@ -41,7 +41,11 @@ You've cloned the repo or started a new project with the startproject command. H
         ({{ project_name }}) $ chmod +x manage.py
         ({{ project_name }}) $ ./manage.py migrate
 
-7. Start the local development server.
+7. Set up the Git hooks.
+
+        $ git_config/configure.sh
+
+8. Start the local development server.
 
     **Using Django's default `runserver` command**
 

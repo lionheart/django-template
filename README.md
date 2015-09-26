@@ -56,4 +56,8 @@ After you've done that, open your browser and navigate to "http://local.{{ your_
 PostgreSQL Setup
 ================
 
-Here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system.
+If you have Homebrew installed:
+
+    brew install postgresql
+
+If you're in the mood for a longer read, here's an [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers OS X, Windows, and Ubuntu).

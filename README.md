@@ -57,7 +57,7 @@ You've cloned the repo or started a new project with the startproject command. H
 
     **Using livereload**
 
-        ({{ project_name }}) $ sudo APP_ENVIRONMENT='local' ./manage.py livereload
+        ({{ project_name }}) $ sudo ./manage.py livereload
 
 I generally map "local.{{ your_project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 

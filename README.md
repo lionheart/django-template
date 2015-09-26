@@ -23,7 +23,7 @@ You've cloned the repo or started a new project with the startproject command. H
 
         ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
 
-5. Create your local database. Make sure you run the [steps below](#postgresql-setup) if you haven't already installed PostgreSQL.
+5. Create your local database. Make sure you run the [steps below](#postgresql-installation) if you haven't already installed PostgreSQL.
 
         $ psql
         postgres# CREATE ROLE {{ your_role_name }} WITH LOGIN ENCRYPTED PASSWORD '{{ your_password }}';

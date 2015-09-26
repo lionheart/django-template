@@ -23,27 +23,27 @@ You've cloned the repo or started a new project with the startproject command. H
 
         ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
 
-5. Make your local database.
+5. Create your local database. Make sure you run the [steps below](#postgresql-setup) if you haven't already installed PostgreSQL.
 
         $ psql
         postgres# CREATE ROLE {{ your_role_name }} WITH LOGIN ENCRYPTED PASSWORD '{{ your_password }}';
         postgres# CREATE DATABASE {{ your_database_name }} WITH OWNER {{ your_role_name }};
 
-    **Note**: If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist`, just do the following to save yourself from having to write `--user postgres` every time you want to run `psql`. If, say, your username is `dan`, you'd do the following:
+    **Note**: If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist` error, just do the following to save yourself from having to write `--user postgres` every time you want to run `psql`. If, say, your username is `dan`, you'd do the following:
 
             # Create a superuser named `dan`
             $ createuser -s dan
             # Create a database for this user to log into.
             $ createdb -O dan dan
 
-    After doing this, re-run step 5.
+    After doing this, re-run the psql commands in step 5.
 
-6. Sync your local database.
+6. Run migrations for your local database.
 
         ({{ project_name }}) $ chmod +x manage.py
         ({{ project_name }}) $ ./manage.py migrate
 
-7. Start the server.
+7. Start the local development server.
 
     **Using Django's default `runserver` command**
 
@@ -51,7 +51,7 @@ You've cloned the repo or started a new project with the startproject command. H
         Performing system checks...
 
         September 17, 2014
-        Django version 1.8, using settings 'settings'
+        Django version 1.8.4, using settings 'settings'
         Starting development server at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
 
@@ -59,15 +59,14 @@ You've cloned the repo or started a new project with the startproject command. H
 
         ({{ project_name }}) $ sudo APP_ENVIRONMENT='local' ./manage.py livereload
 
-I generally map "local.{{ your_project_name }}.com" to 127.0.0.0 with my DNS service. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
+I generally map "local.{{ your_project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 
     127.0.0.1 local.{{ your_project_name }}.com
 
-After you've done that, open your browser and navigate to "http://local.{{ your_project_name }}.com/".
+After you've done that, open your browser and navigate to "local.{{ your_project_name }}.com". Your project is now running!
 
-
-PostgreSQL Setup
-================
+PostgreSQL Installation
+-----------------------
 
 If you're on a Mac and have [Homebrew](https://github.com/homebrew/homebrew) installed:
 

@@ -68,8 +68,8 @@ After you've done that, open your browser and navigate to "local.{{ your_project
 PostgreSQL Installation
 -----------------------
 
-If you're on a Mac and have [Homebrew](https://github.com/homebrew/homebrew) installed:
+If you're on a Mac and have [Homebrew](https://github.com/homebrew/homebrew) installed, we'll keep it simple.
 
     brew install postgresql
 
-If you're in the mood for a longer read, here's an [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers OS X, Windows, and Ubuntu).
+If you're in the mood for a longer read or have run into issues, here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers Mac OS X, Windows, and Ubuntu).

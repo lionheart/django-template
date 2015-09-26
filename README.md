@@ -29,7 +29,7 @@ You've cloned the repo or started a new project with the startproject command. H
         postgres# CREATE ROLE {{ your_role_name }} WITH LOGIN ENCRYPTED PASSWORD '{{ your_password }}';
         postgres# CREATE DATABASE {{ your_database_name }} WITH OWNER {{ your_role_name }};
 
-    **Note**: If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist` error, just do the following to save yourself from having to write `--user postgres` every time you want to run `psql`. If, say, your username is `dan`, you'd do the following:
+    **Note**: If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist` error, just do the following to save yourself from having to write `--user postgres` every time you want to run `psql`. If, say, your username is `dan` on your development machine, you'd run the following:
 
         $ createuser -s dan # Create a superuser named `dan`
         $ createdb -O dan dan # Create a database for this user to log into.

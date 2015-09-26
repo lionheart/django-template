@@ -63,7 +63,7 @@ I generally map "local.{{ your_project_name }}.com" to 127.0.0.0 using DNS. If y
 
     127.0.0.1 local.{{ your_project_name }}.com
 
-After you've done that, open your browser and navigate to "local.{{ your_project_name }}.com". Your project is now running!
+After you've done that, open your browser and navigate to "[local.{{ your_project_name }}.com](http://local.{{ your_project_name }}.com)". Your project is now running!
 
 PostgreSQL Installation
 -----------------------

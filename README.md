@@ -3,16 +3,16 @@ For information on how to use this project template, check out the [wiki](https:
 Installation
 ============
 
-You've cloned the repo or started a new project with the startproject command. Here's how you actually get started developing. I'm assuming you already have pip installed.
+You've cloned the repo or started a new project with the startproject command. Here's how you actually get started developing. These steps assume you have pip installed.
 
-1. Install virtualenv
+1. Install virtualenv.
 
         pip install virtualenv
 
 2. Then, start a virtualenv in the project directory.
 
-        $ virtualenv .
-        $ . bin/activate
+        $ virtualenv venv
+        $ . venv/bin/activate
 
 3. Install the project requirements.
 

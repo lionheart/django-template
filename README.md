@@ -47,7 +47,7 @@ You've cloned the repo or started a new project with the startproject command. H
 
     **Using Django's default `runserver` command**
 
-        ({{ project_name }}) $ sudo APP_ENVIRONMENT='local' ./manage.py runserver 0.0.0.0:80
+        ({{ project_name }}) $ sudo ./manage.py runserver 0.0.0.0:80
         Performing system checks...
 
         September 17, 2014

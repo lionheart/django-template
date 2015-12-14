@@ -26,8 +26,8 @@ You've cloned the repo or started a new project with the startproject command. H
 5. Create your local database. Make sure you run the [steps below](#postgresql-installation) if you haven't already installed PostgreSQL.
 
         $ psql
-        postgres# CREATE ROLE {{ your_role_name }} WITH LOGIN ENCRYPTED PASSWORD '{{ your_password }}';
-        postgres# CREATE DATABASE {{ your_database_name }} WITH OWNER {{ your_role_name }};
+        postgres# CREATE ROLE {{ project_name }}_local WITH LOGIN ENCRYPTED PASSWORD '{{ project_name }}_local';
+        postgres# CREATE DATABASE {{ project_name }}_local WITH OWNER {{ project_name }}_local;
 
     **Note**: If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist` error, just do the following to save yourself from having to write `--user postgres` every time you want to run `psql`. If, say, your username is `dan` on your development machine, you'd run the following:
 
@@ -47,21 +47,15 @@ You've cloned the repo or started a new project with the startproject command. H
 
 8. Start the local development server.
 
-    **Using Django's default `runserver` command**
-
         ({{ project_name }}) $ sudo ./manage.py runserver 0.0.0.0:80
         Performing system checks...
 
         September 17, 2014
-        Django version 1.8.4, using settings 'settings'
+        Django version 1.9, using settings 'settings'
         Starting development server at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
 
-    **Using livereload**
-
-        ({{ project_name }}) $ sudo ./manage.py livereload
-
-I generally map "local.{{ your_project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
+Map "local.makecreate.co" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 
     127.0.0.1 local.{{ your_project_name }}.com
 

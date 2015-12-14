@@ -4,7 +4,7 @@ BASE = os.path.abspath(os.path.dirname(__name__))
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': '{{ project_name }}_local',
         'USER': '{{ project_name }}_local',
         'PASSWORD': '{{ project_name }}_local',

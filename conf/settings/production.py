@@ -7,7 +7,7 @@ ALLOWED_HOSTS = [".{{ product_name }}.com"]
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': '{{ project_name }}',
         'USER': '{{ project_name }}',
         'PASSWORD': '{{ project_name }}',

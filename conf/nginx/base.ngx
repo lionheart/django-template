@@ -30,6 +30,9 @@ http {
     gzip_disable "msie6";
     gzip_types text/css text/plain text/xml application/xml application/xml+rss text/javascript application/x-javascript;
 
+    # Upload limit
+    client_max_body_size 5m;
+
     include /etc/nginx/conf.d/*.conf;
     include /etc/nginx/sites-enabled/*.ngx;
 

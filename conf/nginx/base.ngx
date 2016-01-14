@@ -1,12 +1,16 @@
 user www-data;
-worker_processes 1;
+
+# http://nginx.org/en/docs/ngx_core_module.html#worker_processes
+worker_processes auto;
 worker_rlimit_nofile 8192;
 
 error_log /var/log/nginx/error.log;
 pid /var/run/nginx.pid;
 
 events {
-    worker_connections 2048;
+    # Set to `ulimit -n`
+    worker_connections 768;
+
     # debug_connection 192.168.1.1;
     # multi_accept on;
 }

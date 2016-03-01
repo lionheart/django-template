@@ -16,6 +16,14 @@ upstream {{ project_name }} {
 }
 
 server {
+  # Return HTTP 444 Status for all non-authorized domain requests.
+  # See http://nginx.org/en/docs/http/request_processing.html#how_to_prevent_undefined_server_names
+  server 80;
+  server_name "";
+  return 444;
+}
+
+server {
   listen 80;
   server_name static.{{ project_name }}.com;
   root /var/www/{{ project_name }};

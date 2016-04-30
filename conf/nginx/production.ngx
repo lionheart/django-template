@@ -69,6 +69,15 @@ server {
 #   ssl_certificate ssl/{{ project_name }}.com.crt;
 #   ssl_certificate_key ssl/{{ project_name }}-ca.key.nopass;
 
+#   Disable SSLv3 for POODLE
+#   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
+#   Use stronger Ephemeral Diffie-Hellman (DHE) parameter
+#   Source: https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters
+#   cd /etc/ssl/certs
+#   openssl dhparam -out dhparam.pem 4096
+#   ssl_dhparam /etc/nginx/ssl/dhparam.pem;
+
   server_name {{ project_name }}.com;
   root /var/www/{{ project_name }};
 

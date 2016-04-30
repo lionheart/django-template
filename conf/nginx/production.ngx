@@ -78,6 +78,9 @@ server {
 #   openssl dhparam -out dhparam.pem 4096
 #   ssl_dhparam /etc/nginx/ssl/dhparam.pem;
 
+# Set HSTS expiration to one-year
+# add_header Strict-Transport-Security "max-age=31536000" always;
+
   server_name {{ project_name }}.com;
   root /var/www/{{ project_name }};
 

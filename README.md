@@ -5,18 +5,19 @@ Installation
 
 You've cloned the repo or started a new project with the startproject command. Here's how you actually get started developing. These steps assume you have pip installed.
 
-1. Install virtualenv.
+1. Install PyPy and virtualenv.
 
-        pip install virtualenv
+        $ brew install pypy
+        $ pip_pypy install virtualenv
 
 2. Then, start a virtualenv in the project directory.
 
-        $ virtualenv venv
-        $ . venv/bin/activate
+        $ /usr/local/share/pypy/virtualenv venv-pypy
+        $ . venv-pypy/bin/activate
 
 3. Install the project requirements.
 
-        ({{ project_name }}) $ pip install -r requirements.txt
+        ({{ project_name }}) $ with_gmp=no pip install -r requirements.txt
         # wait for a couple of minutes, hopefully nothing goes wrong!
 
 4. Link the local project settings to local_settings.py.

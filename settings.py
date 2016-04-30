@@ -2,6 +2,10 @@ import os
 # from S3 import CallingFormat
 # from boto.s3.connection import OrdinaryCallingFormat
 
+# PyPy compatibility
+from psycopg2cffi import compat
+compat.register()
+
 BASE = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True

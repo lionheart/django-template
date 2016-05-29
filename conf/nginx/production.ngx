@@ -65,21 +65,35 @@ server {
 server {
   listen 80;
 
-#   listen 443 default_server ssl;
-#   ssl_certificate ssl/{{ project_name }}.com.crt;
-#   ssl_certificate_key ssl/{{ project_name }}-ca.key.nopass;
+#  listen 443 default_server ssl;
+#  ssl_certificate ssl/{{ project_name }}.com.crt;
+#  ssl_certificate_key ssl/{{ project_name }}-ca.key.nopass;
 
-#   Disable SSLv3 for POODLE
-#   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  # Disable SSLv3 for POODLE
+#  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
-#   Use stronger Ephemeral Diffie-Hellman (DHE) parameter
-#   Source: https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters
-#   cd /etc/ssl/certs
-#   openssl dhparam -out dhparam.pem 4096
-#   ssl_dhparam /etc/nginx/ssl/dhparam.pem;
+  # Use stronger Ephemeral Diffie-Hellman (DHE) parameter
+  # Source: https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters
+  # cd /etc/ssl/certs
+  # openssl dhparam -out dhparam.pem 4096
+#  ssl_dhparam /etc/nginx/ssl/dhparam.pem;
 
-# Set HSTS expiration to one-year
-# add_header Strict-Transport-Security "max-age=31536000" always;
+  # Use Mozilla-preferred cipher suite
+  # Source: https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#The_Cipher_Suite
+#  ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:ECDHE-RSA-AES128-GCM-SHA256:AES256+EECDH:DHE-RSA-AES128-GCM-SHA256:AES256+EDH:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4";
+
+  # Prefer server over client-based ciphers
+#  ssl_prefer_server_ciphers on;
+
+  # Cache the SSL session for 10m
+#  ssl_session_cache    shared:SSL:10m;
+#  ssl_session_timeout  10m;
+
+  # Add HSTS
+#  add_header Strict-Transport-Security "max-age=31536000" always;
+
+  # Set HSTS expiration to one-year
+#  add_header Strict-Transport-Security "max-age=31536000" always;
 
   server_name {{ project_name }}.com;
   root /var/www/{{ project_name }};

@@ -1,4 +1,4 @@
-For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.8).
+For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.9).
 
 Installation
 ============
@@ -51,7 +51,7 @@ You've cloned the repo or started a new project with the startproject command. H
         Performing system checks...
 
         September 17, 2014
-        Django version 1.9, using settings 'settings'
+        Django version 1.9.6, using settings 'settings'
         Starting development server at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
 

@@ -4,7 +4,7 @@ python-memcached==1.57
 
 # Debug Tools
 sqlparse==0.1.6
-django-debug-toolbar==1.2.1
+django-debug-toolbar==1.4
 django-devserver==0.8.0
 
 # Deployment
@@ -28,7 +28,7 @@ sorl-thumbnail==12.3
 
 django-redis-sessions-fork==0.5.2
 django-lionheart-helpers==1.10.0
-django-statictastic==0.6.3
+django-statictastic==1.0.1
 
 django-localflavor==1.0
 gunicorn==18.0

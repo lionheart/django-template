@@ -8,7 +8,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = ()
-# SERVER_EMAIL = "hi@example.com"
+# SERVER_EMAIL = "hi@examp.com"
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -73,7 +73,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'app',
     'debug_toolbar',
-    'devserver',
     'statictastic',
     # 'livereload',
     # 'django_object_actions',
@@ -188,12 +187,6 @@ DEBUG_TOOLBAR_CONFIG = {
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
-DEVSERVER_IGNORED_PREFIXES = ['/static', '/media', '/__debug__']
-DEVSERVER_MODULES = (
-    'devserver.modules.sql.SQLSummaryModule',
-    'devserver.modules.profile.ProfileSummaryModule',
-)
-
 # Uncomment imports at top to enable S3 integration
 #
 # AWS_CALLING_FORMAT = CallingFormat.PATH
@@ -223,9 +216,6 @@ DEVSERVER_MODULES = (
 # RAVEN_CONFIG = {
 #     'dsn': "https://{}:{}@app.getsentry.com/4195".format(SENTRY_PUBLIC_KEY, SENTRY_SECRET_KEY)
 # }
-
-DEVSERVER_DEFAULT_ADDR = "0.0.0.0"
-DEVSERVER_DEFAULT_PORT = "80"
 
 # django-statictastic querystring support
 COMMIT_SHA = ""

@@ -1,4 +1,4 @@
-For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.9).
+For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.9-Heroku).
 
 Installation
 ============
@@ -55,7 +55,7 @@ You've cloned the repo or started a new project with the startproject command. H
         Starting development server at http://0.0.0.0:80/
         Quit the server with CONTROL-C.
 
-Map "local.{{ project_name }}.co" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
+Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 
     127.0.0.1 local.{{ your_project_name }}.com
 

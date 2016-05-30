@@ -61,6 +61,17 @@ Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet re
 
 After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!
 
+Deployment
+----------
+
+    $ heroku create
+    $ heroku config:set APP_ENVIRONMENT=production
+    $ heroku config:set AWS_ACCESS_KEY_ID=XXX
+    $ heroku config:set AWS_SECRET_ACCESS_KEY=XXX
+    $ heroku config:set AWS_STORAGE_BUCKET_NAME=XXX
+    $ git push heroku master
+    $ heroku run python manage.py syncmedia
+
 PostgreSQL Installation
 -----------------------
 

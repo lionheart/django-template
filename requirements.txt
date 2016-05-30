@@ -26,6 +26,9 @@ django-statictastic==1.0.1
 django-localflavor==1.3
 gunicorn==19.6.0
 
+# Heroku-specific
+dj-database-url
+
 # Mandrill
 # djrill==2.0
 # Avoids SSL error on connecting to Mandrill's API

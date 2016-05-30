@@ -1,7 +1,6 @@
-django==1.8.2
-psycopg2==2.5.3
-py-bcrypt==0.4
-python-memcached==1.53
+django==1.8.13
+psycopg2==2.6.1
+python-memcached==1.57
 
 # Debug Tools
 sqlparse==0.1.6
@@ -17,14 +16,14 @@ django-ses==0.4.1
 gitpython==0.3.2.RC1
 raven==5.0.0
 
-# PIL
-# django-shorturls==1.0.1
+# Thumbnailing
+# sorl-thumbnail==12.3
 # suds==0.4
 # django-celery==3.0.11
 
 django-redis-sessions-fork==0.5.2
-django-lionheart-helpers==1.1.12
-django-statictastic==0.6.2
+django-lionheart-helpers==1.8.2
+django-statictastic==0.6.3
 
 django-localflavor==1.0
 

@@ -1,12 +1,14 @@
-bind = "unix:/tmp/gunicorn.{{ project_name }}.production.sock"
+import os
+pythonpath = os.path.abspath("..")
+
+bind = "0.0.0.0:{}".format(os.environ['PORT'])
 
 # http://gunicorn.org/design.html#how-many-workers
-workers = 5
+workers = 3
 
 # Supervisor needs a non-daemonized process
 daemon = False
 
-pidfile = "/tmp/gunicorn.{{ project_name }}.production.pid"
 loglevel = "warning"
 proc_name = "{{ project_name }}-production"
 worker_class = "gevent"

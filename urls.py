@@ -13,7 +13,7 @@ admin.autodiscover()
 urlpatterns = patterns('app.views',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^204$', status_204),
-    home_url('home'),
+    home_url('home', None, 'app'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

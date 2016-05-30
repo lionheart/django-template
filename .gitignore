@@ -3,12 +3,7 @@
 *.un~
 .DS_Store
 .sass-cache/
-bin/
-build/
-include/
-lib/
-src/
-share/
+venv/
 local_settings.py
 .Python
 pip-selfcheck.json

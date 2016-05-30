@@ -1,4 +1,5 @@
 import os
+import imp
 # from S3 import CallingFormat
 # from boto.s3.connection import OrdinaryCallingFormat
 
@@ -8,7 +9,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = ()
-# SERVER_EMAIL = "hi@examp.com"
+# SERVER_EMAIL = "hi@example.com"
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -33,12 +34,12 @@ TEMPLATE_DIRS = (
     os.path.join(BASE, "templates"),
 )
 
-STATICFILES_DIRS = (os.path.join(BASE, "static"),)
+STATICFILES_DIRS = (os.path.join(BASE, "{{ project_name }}", "static"),)
 STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapp.com"]
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -50,9 +51,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -71,10 +72,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.webdesign',
     'django.contrib.staticfiles',
+
     'app',
-    'debug_toolbar',
+    'devserver',
     'statictastic',
-    # 'livereload',
     # 'django_object_actions',
     # 'sorl.thumbnail',
     # 'djcelery',
@@ -167,42 +168,38 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/account/login'
 LOGOUT_URL = '/account/logout'
 
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.versions.VersionsPanel',
-    'debug_toolbar.panels.timer.TimerPanel',
-    'debug_toolbar.panels.settings.SettingsPanel',
-    'debug_toolbar.panels.headers.HeadersPanel',
-    'debug_toolbar.panels.request.RequestPanel',
-    'debug_toolbar.panels.sql.SQLPanel',
-    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-    'debug_toolbar.panels.cache.CachePanel',
-    'debug_toolbar.panels.signals.SignalsPanel',
-    'debug_toolbar.panels.logging.LoggingPanel',
-    'debug_toolbar.panels.redirects.RedirectsPanel',
-)
-
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False
-}
-
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
+
+DEVSERVER_IGNORED_PREFIXES = ['/static', '/media']
+DEVSERVER_MODULES = (
+    'devserver.modules.sql.SQLSummaryModule',
+    'devserver.modules.profile.ProfileSummaryModule',
+)
 
 # Uncomment imports at top to enable S3 integration
 #
 # AWS_CALLING_FORMAT = CallingFormat.PATH
-# AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
-# AWS_S3_SECURE_URLS = True
-# AWS_QUERYSTRING_AUTH = False
 # AWS_GZIP = True
 
-# AWS_STORAGE_BUCKET_NAME = 'uploads-{{ project_name }}'
-# AWS_STATIC_STORAGE_BUCKET_NAME = 'static-{{ project_name }}'
-# AWS_HEADERS = {
-#         'Cache-Control': "max-age:5, public"
-#     }
+from boto.s3.connection import OrdinaryCallingFormat
+AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+AWS_S3_SECURE_URLS = True
+AWS_QUERYSTRING_AUTH = False
 
-# AWS_ACCESS_KEY_ID = ''
-# AWS_SECRET_ACCESS_KEY = ''
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+if AWS_STORAGE_BUCKET_NAME:
+    # Optionally change to full CDN url
+    STATIC_URL = "https://s3.amazonaws.com/{}/".format(AWS_STORAGE_BUCKET_NAME)
+else:
+    STATIC_URL = "/static/"
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+
+AWS_STATIC_STORAGE_BUCKET_NAME = os.environ.get("AWS_STATIC_STORAGE_BUCKET_NAME")
+AWS_HEADERS = {
+        'Cache-Control': "max-age:5, public"
+    }
 
 # EMAIL_BACKEND = "django_ses.SESBackend"
 # AWS_SES_ACCESS_KEY_ID = ''
@@ -217,15 +214,24 @@ INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 #     'dsn': "https://{}:{}@app.getsentry.com/4195".format(SENTRY_PUBLIC_KEY, SENTRY_SECRET_KEY)
 # }
 
+DEVSERVER_DEFAULT_ADDR = "0.0.0.0"
+DEVSERVER_DEFAULT_PORT = "80"
+
 # django-statictastic querystring support
 COMMIT_SHA = ""
+
+settings_path = lambda env: os.path.join(BASE, 'conf', 'settings', '{}.py'.format(env))
 
 try:
     from local_settings import *
 except ImportError:
-    raise ImportError("""Please link the appropriate settings file from conf/settings to `local_settings.py` in the project root. E.g.
-
-    ({{ project_name }})$ ln -s conf/settings/local.py local_settings.py""")
+    try:
+        environment = os.environ['APP_ENVIRONMENT']
+    except KeyError:
+        raise Exception("""Please set your app environment (APP_ENVIRONMENT).""")
+    else:
+        config = imp.load_source('local_settings', settings_path(environment))
+        from local_settings import *
 
 # Uncomment if using django-celery
 # try:
@@ -236,4 +242,3 @@ except ImportError:
 #    raise ImportError("""Please link the appropriate settings file from conf/settings/celery to `celeryconfig.py` in the project root. E.g.
 #
 #    ({{ project_name }})$ ln -s conf/settings/celery/local.py celeryconfig.py""")
-

@@ -47,19 +47,19 @@ You've cloned the repo or started a new project with the startproject command. H
 
 8. Start the local development server.
 
-        ({{ project_name }}) $ sudo ./manage.py runserver 0.0.0.0:80
+        ({{ project_name }}) $ ./manage.py runserver
         Performing system checks...
 
         September 17, 2014
         Django version 1.9.6, using settings 'settings'
-        Starting development server at http://0.0.0.0:80/
+        Starting development server at http://127.0.0.1:8000/
         Quit the server with CONTROL-C.
 
-Map "local.makecreate.co" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
+Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 
-    127.0.0.1 local.{{ your_project_name }}.com
+    127.0.0.1 local.{{ project_name }}.com
 
-After you've done that, open your browser and navigate to "[local.{{ your_project_name }}.com](http://local.{{ your_project_name }}.com)". Your project is now running!
+After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!
 
 PostgreSQL Installation
 -----------------------

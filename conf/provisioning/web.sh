@@ -6,7 +6,7 @@ set -x
 
 yes | add-apt-repository ppa:nginx/stable
 apt-get update
-apt-get --yes install nginx memcached rsync libpq-dev python-dev libxslt1-dev libxml2-dev python-psycopg2 git-core redis-server postgresql-client inetutils-syslogd apache2-utils python-pip libevent-dev libgraphviz-dev python-pip libffi-dev
+apt-get --yes install nginx memcached rsync libpq-dev python3-dev libxslt1-dev libxml2-dev python3-psycopg2 git-core redis-server postgresql-client inetutils-syslogd apache2-utils python3-pip libevent-dev libgraphviz-dev libffi-dev
 
 # Uncomment if you want to install Wordpress
 # yes | apt-get install php5-fpm php5-mysql mysql-server

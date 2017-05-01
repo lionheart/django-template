@@ -1,31 +1,31 @@
-django==1.9.6
-psycopg2==2.6.1
+django==1.11
+psycopg2==2.7.1
 python-memcached==1.58
 
 # Deployment
-fabric==1.11.1
+fabric==1.13.2
 
 # AWS
 django-storages-redux==1.3.2
-boto==2.40.0
+boto==2.46.1
 
 # Misc
-gitpython==0.3.2.RC1
-raven==5.10.0
-django-cachalot==1.2.1
+gitpython==2.1.3
+raven==6.0.0
+django-cachalot==1.4.1
 
 # Need to install with CFLAGS="-I/usr/pkg/include" prepended in order for system libraries to be found.
-pillow==3.2.0
+pillow==4.1.1
 
 # Thumbnailing
 sorl-thumbnail==12.4a1
 
 django-redis-sessions-fork==0.7.0
-django-lionheart-helpers==1.10.0
-django-statictastic==1.0.1
+django-lionheart-helpers==2.2.1
+django-statictastic==3.0.0
 
-django-localflavor==1.3
-gunicorn==19.6.0
+django-localflavor==1.4.1
+gunicorn==19.7.1
 
 # Mandrill
 # djrill==2.0

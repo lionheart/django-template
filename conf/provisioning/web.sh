@@ -39,6 +39,7 @@ sudo -u ubuntu virtualenv /home/ubuntu/environments/{{ project_name }}
 pip3 install supervisor
 pip3 install django
 pip3 install setproctitle
+pip3 install --upgrade pip
 
 sudo gem install --no-rdoc --no-ri oily_png
 

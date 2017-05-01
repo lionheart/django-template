@@ -22,7 +22,7 @@ You've cloned the repo or started a new project with the startproject command. H
 
 3. Install the project requirements.
 
-        ({{ project_name }}) $ pip install -r requirements.txt
+        ({{ project_name }}) $ pip3 install -r requirements.txt
         # wait for a couple of minutes, hopefully nothing goes wrong!
 
 4. Link the local project settings to local_settings.py.

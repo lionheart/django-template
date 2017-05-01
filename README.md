@@ -1,5 +1,11 @@
 For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.9).
 
+# Requirements
+
+* Python 3
+* pip
+* Homebrew
+
 Installation
 ============
 
@@ -7,7 +13,7 @@ You've cloned the repo or started a new project with the startproject command. H
 
 1. Install virtualenv.
 
-        pip install virtualenv
+        pip3 install virtualenv
 
 2. Then, start a virtualenv in the project directory.
 

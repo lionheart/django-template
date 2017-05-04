@@ -2,15 +2,28 @@ For information on how to use this project template, check out the [wiki](https:
 
 # {{ project_name }}
 
+### Table of Contents
+
+* [Requirements](#requirements)
+* [Local Setup](#local-setup)
+* [Local Development](#local-development)
+* [Deployment](#deployment)
+
 ### Requirements
 
 * [Homebrew](https://brew.sh) (not quite a "requirement" but recommended)
+
+        $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 * [Python 3](https://www.python.org/downloads/release/python-361/)
-* [pip](https://pip.pypa.io/en/stable/)
 
-## Installation
+        $ brew install python3
 
-You've cloned the repo or started a new project with the startproject command. Here's how you actually get started developing. These steps assume you have pip installed.
+* [pip](https://pip.pypa.io/en/stable/) (should come bundled when installing Python 3 via Homebrew)
+
+## Local Setup
+
+These are prerequisites to deploying or developing locally. These steps assume you have pip installed.
 
 1. Install virtualenv.
 
@@ -26,11 +39,13 @@ You've cloned the repo or started a new project with the startproject command. H
         ({{ project_name }}) $ pip3 install -r requirements.txt
         # wait for a couple of minutes, hopefully nothing goes wrong!
 
-4. Link the local project settings to local_settings.py.
+## Installation
+
+1. Link the local project settings to local_settings.py.
 
         ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
 
-5. Create your local database. Make sure you run the [steps below](#postgresql-installation) if you haven't already installed PostgreSQL.
+2. Create your local database. Make sure you run the [steps below](#postgresql-installation) if you haven't already installed PostgreSQL.
 
         $ psql
         postgres# CREATE ROLE {{ project_name }}_local WITH LOGIN ENCRYPTED PASSWORD '{{ project_name }}_local';
@@ -43,16 +58,16 @@ You've cloned the repo or started a new project with the startproject command. H
 
     After doing this, re-run the psql commands in step 5.
 
-6. Make manage.py executable and run migrations.
+3. Make manage.py executable and run migrations.
 
         ({{ project_name }}) $ chmod +x manage.py
         ({{ project_name }}) $ ./manage.py migrate
 
-7. Set up the Git hooks.
+4. Set up the Git hooks.
 
         $ git_config/configure.sh
 
-8. Start the local development server.
+5. Start the local development server.
 
         ({{ project_name }}) $ ./manage.py runserver
         Performing system checks...
@@ -67,6 +82,27 @@ Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet re
     127.0.0.1 local.{{ project_name }}.com
 
 After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!
+
+## Deployment
+
+1. Add the following to your SSH configuration in `.ssh/config` (create it if it doesn't already exist).
+
+        Host {{ project_name }}-production
+          HostName IP_ADDRESS_HERE
+          IdentityFile ~/.ssh/{{ project_name }}-web-servers.pem
+          User ubuntu
+
+3. Acquire the SSH private key for the {{ project_name }} production server and move it to the path referenced above (`~/.ssh/{{ project_name }}-web-servers.pem`). Make sure permissions are set to 400.
+
+        $ cd ~/.ssh
+        $ chmod 400 {{ project_name }}-web-servers.pem
+
+2. Make sure all of your local changes are pushed to GitHub.
+
+3. In the project root, run the following to deploy to the server. Make sure you're running in the virtual environment as specified in step 2 of the prerequisites.
+
+        ({{ project_name }}) $ fab -H {{ project_name }}-production deploy
+
 
 PostgreSQL Installation
 -----------------------

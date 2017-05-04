@@ -1,22 +1,11 @@
 import os
-# from S3 import CallingFormat
-# from boto.s3.connection import OrdinaryCallingFormat
 
 BASE = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 ADMINS = ()
 # SERVER_EMAIL = "hi@examp.com"
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
-    "django.contrib.messages.context_processors.messages",
-)
 
 MANAGERS = ADMINS
 TIME_ZONE = 'UTC'
@@ -29,21 +18,12 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE, "templates"),
-)
-
 STATICFILES_DIRS = (os.path.join(BASE, "static"),)
 STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 
 ALLOWED_HOSTS = []
-
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -166,10 +146,8 @@ LOGOUT_URL = '/account/logout'
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
-# Uncomment imports at top to enable S3 integration
-#
-# AWS_CALLING_FORMAT = CallingFormat.PATH
-# AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+SESSION_SAVE_EVERY_REQUEST = True
+
 # AWS_S3_SECURE_URLS = True
 # AWS_QUERYSTRING_AUTH = False
 # AWS_GZIP = True
@@ -177,8 +155,8 @@ INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 # AWS_STORAGE_BUCKET_NAME = 'uploads-{{ project_name }}'
 # AWS_STATIC_STORAGE_BUCKET_NAME = 'static-{{ project_name }}'
 # AWS_HEADERS = {
-#         'Cache-Control': "max-age:5, public"
-#     }
+#         'Cache-Control': "max-age:86400, public"
+# }
 
 # AWS_ACCESS_KEY_ID = ''
 # AWS_SECRET_ACCESS_KEY = ''

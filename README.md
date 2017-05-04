@@ -1,13 +1,14 @@
 For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.11).
 
-# Requirements
+# {{ project_name }}
 
-* Python 3
-* pip
-* Homebrew
+### Requirements
 
-Installation
-============
+* [Homebrew](https://brew.sh) (not quite a "requirement" but recommended)
+* [Python 3](https://www.python.org/downloads/release/python-361/)
+* [pip](https://pip.pypa.io/en/stable/)
+
+## Installation
 
 You've cloned the repo or started a new project with the startproject command. Here's how you actually get started developing. These steps assume you have pip installed.
 

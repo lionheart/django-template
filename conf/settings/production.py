@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
+import os
 
-ALLOWED_HOSTS = [".{{ product_name }}.com"]
+DEBUG = 'DEBUG' in os.environ
+TEMPLATE_DEBUG = DEBUG
+BASE = os.path.abspath(os.path.dirname(__name__))
+
+ALLOWED_HOSTS = [".{{ project_name }}.com"]
 
 DATABASES = {
     'default': {
@@ -30,3 +33,30 @@ STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
 STATIC_URL = "/static/"
 
 BASE_URL = "https://{{ project_name }}.com"
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE, "templates"),
+        ],
+        'OPTIONS': {
+            'loaders': (
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ),
+            'context_processors': [
+                "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.media",
+                'django.template.context_processors.tz',
+                "django.template.context_processors.request",
+                "django.contrib.messages.context_processors.messages",
+                "app.processors.add_metadata"
+            ],
+        },
+    },
+]
+
+

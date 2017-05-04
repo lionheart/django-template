@@ -18,9 +18,26 @@ upstream {{ project_name }} {
 server {
   # Return HTTP 444 Status for all non-authorized domain requests.
   # See http://nginx.org/en/docs/http/request_processing.html#how_to_prevent_undefined_server_names
-  server 80;
+  listen 80;
   server_name "";
   return 444;
+}
+
+# letsencrypt acme challenge
+server {
+  listen 80;
+
+  server_name {{ project_name }}.com;
+  server_name www.{{ project_name }}.com;
+
+  location /.well-known/acme-challenge/ {
+    alias /var/www/{{ project_name }}/ssl/acme-challenge/;
+    try_files $uri =404;
+  }
+
+  location / {
+    rewrite ^ https://{{ project_name }}.co$request_uri? permanent;
+  }
 }
 
 server {
@@ -74,8 +91,9 @@ server {
 #
 #  # Use stronger Ephemeral Diffie-Hellman (DHE) parameter
 #  # Source: https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters
+#  # See also: https://security.stackexchange.com/a/95184/55704
 #  # cd /etc/ssl/certs
-#  # openssl dhparam -out dhparam.pem 4096
+#  # openssl dhparam -dsaparam -out dhparam.pem 4096
 #  ssl_dhparam /etc/nginx/ssl/dhparam.pem;
 #
 #  # Use Mozilla-preferred cipher suite
@@ -100,6 +118,29 @@ server {
 
   access_log /var/log/nginx/{{ project_name }}.log combined;
   error_log /var/log/nginx/{{ project_name }}.err warn;
+
+  location /robots.txt {
+    alias /var/www/{{ project_name }}/static/robots.txt;
+  }
+
+  location /static/admin/ {
+    alias /home/ubuntu/environments/{{ project_name }}/lib/python2.7/site-packages/django/contrib/admin/static/admin/;
+    access_log off;
+
+    proxy_cache maincache;
+    proxy_cache_valid 200 1m;
+    proxy_cache_use_stale updating;
+  }
+
+  location /static/ {
+    expires max;
+    access_log off;
+    alias /var/www/{{ project_name }}/static/;
+
+    proxy_cache maincache;
+    proxy_cache_valid 200 1m;
+    proxy_cache_use_stale updating;
+  }
 
   location / {
     proxy_pass http://{{ project_name }};

@@ -41,5 +41,6 @@ pip3 install django
 pip3 install setproctitle
 pip3 install --upgrade pip
 
-sudo gem install --no-rdoc --no-ri oily_png
+gem install --no-rdoc --no-ri oily_png
+
 

@@ -9,6 +9,9 @@ env.app = '{{ project_name }}'
 env.dest = "/var/www/%(app)s" % env
 env.use_ssh_config = True
 
+def label(env):
+    return env.host_string.replace("%(app)s-" % env, "")
+
 def reload_processes():
     sudo("kill -HUP `cat /tmp/%(app)s.pid`" % env)
 
@@ -29,12 +32,35 @@ def sync():
 def deploy():
     sync()
     link_files()
-    reload_processes()
+
+    with prefix(". /home/ubuntu/environments/%(app)s/bin/activate" % env):
+        run("pip install -qr %(dest)s/requirements.txt" % env)
+
+        with cd(env.dest):
+            run("./manage.py migrate" % env)
+            run("./manage.py syncmedia --ignore=img-sources/" % env)
+
     add_commit_sha()
+    reload_processes()
+    update_system_configuration()
+
+
+def update_system_configuration():
+    print(colors.yellow("Updating system configuration."))
+    env.label = label(env)
+    with cd(env.dest):
+        sudo("rm -f /etc/logrotate.conf")
+        sudo("cp conf/logrotate.conf /etc/")
+        sudo("cp conf/logrotate/* /etc/logrotate.d")
+
+        sudo("rm -f /etc/cron.d/%(app)s" % env)
+        sudo("cp conf/cron/%(label)s.crontab /etc/cron.d/%(app)s" % env)
+        sudo("sudo service cron restart")
+
 
 def link_files():
     print(colors.yellow("Linking settings."))
-    env.label = env.host_string.replace("%(app)s-" % env, "")
+    env.label = label(env)
     with cd(env.dest):
         sudo("rm -f local_settings.py")
         sudo("ln -s conf/settings/%(label)s.py local_settings.py" % env)
@@ -51,7 +77,7 @@ def link_files():
 def reload_processes(reload_type="soft"):
     print(colors.yellow("Reloading processes."))
 
-    env.label = env.host_string.replace("%(app)s-" % env, "")
+    env.label = label(env)
     with cd(env.dest):
         sudo("kill -HUP `cat /tmp/gunicorn.%(app)s.%(label)s.pid`" % env)
 

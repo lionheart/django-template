@@ -6,7 +6,7 @@ set -x
 
 yes | add-apt-repository ppa:nginx/stable
 apt-get update
-apt-get --yes install nginx memcached rsync libpq-dev python3-dev libxslt1-dev libxml2-dev python3-psycopg2 git-core redis-server postgresql-client inetutils-syslogd apache2-utils python3-pip libevent-dev libgraphviz-dev libffi-dev ruby-dev
+apt-get --yes install nginx memcached rsync libpq-dev python3-dev libxslt1-dev libxml2-dev python3-psycopg2 git-core redis-server postgresql postgresql-contrib inetutils-syslogd apache2-utils python3-pip libevent-dev libgraphviz-dev libffi-dev ruby-dev
 
 # Uncomment if you want to install Wordpress
 # yes | apt-get install php5-fpm php5-mysql mysql-server
@@ -33,8 +33,8 @@ ln -s /var/www/{{ project_name }}/conf/nginx/base.ngx /etc/nginx/nginx.conf
 rm -f /etc/nginx/sites-enabled/*
 ln -s /var/www/{{ project_name }}/conf/nginx/$ENVIRONMENT.ngx /etc/nginx/sites-enabled/
 
-pip install virtualenv
-sudo -u ubuntu mkdir /home/ubuntu/environments/{{ project_name }}
+pip3 install virtualenv
+sudo -u ubuntu mkdir -p /home/ubuntu/environments/{{ project_name }}
 sudo -u ubuntu virtualenv /home/ubuntu/environments/{{ project_name }}
 pip3 install supervisor
 pip3 install django

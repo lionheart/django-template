@@ -82,6 +82,12 @@ server {
 server {
   listen 80;
 
+  server_name {{ project_name }}.com;
+  root /var/www/{{ project_name }};
+
+  access_log /var/log/nginx/{{ project_name }}.log combined;
+  error_log /var/log/nginx/{{ project_name }}.err warn;
+
 #   listen 443 default_server ssl;
 #   ssl_certificate ssl/{{ project_name }}.com.crt;
 #   ssl_certificate_key ssl/{{ project_name }}-ca.key.nopass;
@@ -116,12 +122,7 @@ server {
   # Enable XSS Protection
   add_header X-XSS-Protection "1; mode=block";
   add_header X-Content-Type-Options "nosniff";
-
-  server_name {{ project_name }}.com;
-  root /var/www/{{ project_name }};
-
-  access_log /var/log/nginx/{{ project_name }}.log combined;
-  error_log /var/log/nginx/{{ project_name }}.err warn;
+  add_header Referrer-Policy "same-origin";
 
   location /robots.txt {
     alias /var/www/{{ project_name }}/static/robots.txt;

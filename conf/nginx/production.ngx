@@ -106,12 +106,16 @@ server {
 #  # Cache the SSL session for 10m
 #  ssl_session_cache    shared:SSL:10m;
 #  ssl_session_timeout  10m;
-#
-#  # Add HSTS
+
+#  # Set HSTS expiration to one-year
 #  add_header Strict-Transport-Security "max-age=31536000" always;
 
-# Set HSTS expiration to one-year
-# add_header Strict-Transport-Security "max-age=31536000" always;
+#  # Enable a generic CSP to load all content over HTTPS
+#  add_header Content-Security-Policy "default-src https:; script-src https: 'unsafe-inline' 'unsafe-eval'; style-src https: 'unsafe-inline'; object-src https: 'unsafe-inline'";
+
+  # Enable XSS Protection
+  add_header X-XSS-Protection "1; mode=block";
+  add_header X-Content-Type-Options "nosniff";
 
   server_name {{ project_name }}.com;
   root /var/www/{{ project_name }};

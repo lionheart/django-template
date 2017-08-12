@@ -1,4 +1,4 @@
-django==1.11.2
+django==1.11.4
 psycopg2==2.7.1
 python-memcached==1.58
 

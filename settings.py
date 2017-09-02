@@ -6,18 +6,9 @@ import imp
 BASE = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 ADMINS = ()
 # SERVER_EMAIL = "hi@example.com"
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
-    "django.contrib.messages.context_processors.messages",
-)
 
 MANAGERS = ADMINS
 TIME_ZONE = 'UTC'
@@ -30,21 +21,12 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE, "templates"),
-)
-
 STATICFILES_DIRS = (os.path.join(BASE, "{{ project_name }}", "static"),)
 STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 
 ALLOWED_HOSTS = [".herokuapp.com"]
-
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -70,11 +52,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
-    'django.contrib.webdesign',
     'django.contrib.staticfiles',
-
     'app',
-    'devserver',
     'statictastic',
     # 'django_object_actions',
     # 'sorl.thumbnail',
@@ -170,11 +149,7 @@ LOGOUT_URL = '/account/logout'
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
-DEVSERVER_IGNORED_PREFIXES = ['/static', '/media']
-DEVSERVER_MODULES = (
-    'devserver.modules.sql.SQLSummaryModule',
-    'devserver.modules.profile.ProfileSummaryModule',
-)
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Uncomment imports at top to enable S3 integration
 #
@@ -198,7 +173,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
 AWS_STATIC_STORAGE_BUCKET_NAME = os.environ.get("AWS_STATIC_STORAGE_BUCKET_NAME")
 AWS_HEADERS = {
-        'Cache-Control': "max-age:5, public"
+        'Cache-Control': "max-age:86400, public"
     }
 
 # EMAIL_BACKEND = "django_ses.SESBackend"
@@ -213,9 +188,6 @@ AWS_HEADERS = {
 # RAVEN_CONFIG = {
 #     'dsn': "https://{}:{}@app.getsentry.com/4195".format(SENTRY_PUBLIC_KEY, SENTRY_SECRET_KEY)
 # }
-
-DEVSERVER_DEFAULT_ADDR = "0.0.0.0"
-DEVSERVER_DEFAULT_PORT = "80"
 
 # django-statictastic querystring support
 COMMIT_SHA = ""

@@ -18,8 +18,34 @@ CACHES = {
 }
 
 # Uncomment if you'd like to use S3 for static file storage.
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
+STATIC_URL = "/static/"
+
+BASE_URL = "https://{{ project_name }}.com"
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE, "templates"),
+        ],
+        'OPTIONS': {
+            'loaders': (
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ),
+            'context_processors': [
+                "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.media",
+                'django.template.context_processors.tz',
+                "django.template.context_processors.request",
+                "django.contrib.messages.context_processors.messages",
+                "app.processors.add_metadata"
+            ],
+        },
+    },
+]
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'

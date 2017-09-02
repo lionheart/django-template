@@ -8,13 +8,15 @@ from lionheart.utils import template_url
 from lionheart.utils import home_url
 from lionheart.utils import status_204
 
+from app import views
+
 admin.autodiscover()
 
-urlpatterns = patterns('app.views',
+urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^204$', status_204),
-    home_url('home', None, 'app'),
-)
+    home_url(views.home),
+]
 
 urlpatterns += staticfiles_urlpatterns()
 

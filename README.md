@@ -1,4 +1,4 @@
-For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.9-Heroku).
+For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.11-Heroku).
 
 # {{ project_name }}
 

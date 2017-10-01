@@ -12,6 +12,7 @@ For information on how to use this project template, check out the [wiki](https:
 
 ### Requirements
 
+
 * [Homebrew](https://brew.sh) (not quite a "requirement" but recommended)
 
         $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -28,67 +29,25 @@ For information on how to use this project template, check out the [wiki](https:
 
     If you're in the mood for a longer read or have run into issues, here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers Mac OS X, Windows, and Ubuntu).
 
-## Local Setup
+## Local Development
 
-These are prerequisites to deploying or developing locally. These steps assume you have pip installed.
+1. Run the initialization script. This will set up your local Python virtual environment, install all requirements, link local settings, initialize the local development database, and run all migrations.
 
-1. Install virtualenv.
+        $ ./scripts/init.sh
 
-        pip3 install virtualenv
-
-2. Then, start a virtualenv in the project directory.
-
-        $ virtualenv venv
-        $ . venv/bin/activate
-
-3. Install the project requirements.
-
-        ({{ project_name }}) $ pip3 install -r requirements.txt
-        # wait for a couple of minutes, hopefully nothing goes wrong!
-
-## Installation
-
-1. Link the local project settings to local_settings.py.
-
-        ({{ project_name }}) $ ln -s conf/settings/local.py local_settings.py
-
-2. Create your local database. Make sure you run the [steps below](#postgresql-installation) if you haven't already installed PostgreSQL.
-
-        $ psql
-        postgres# CREATE ROLE {{ project_name }}_local WITH LOGIN ENCRYPTED PASSWORD '{{ project_name }}_local';
-        postgres# CREATE DATABASE {{ project_name }}_local WITH OWNER {{ project_name }}_local;
-
-    **Note**: If you get a `psql: FATAL:  role "YOUR_USERNAME" does not exist` error, just do the following to save yourself from having to write `--user postgres` every time you want to run `psql`. If, say, your username is `dan` on your development machine, you'd run the following:
-
-        $ createuser -s dan # Create a superuser named `dan`
-        $ createdb -O dan dan # Create a database for this user to log into.
-
-    After doing this, re-run the psql commands in step 5.
-
-3. Make manage.py executable and run migrations.
-
-        ({{ project_name }}) $ chmod +x manage.py
-        ({{ project_name }}) $ ./manage.py migrate
-
-4. Set up the Git hooks.
+2. Set up the Git hooks (optional).
 
         $ git_config/configure.sh
 
-5. Start the local development server.
+3. Start the local development server and Sass.
 
-        ({{ project_name }}) $ ./manage.py runserver
-        Performing system checks...
+        ({{ project_name }}) $ PYTHONUNBUFFERED=True foreman start -f Procfile.dev
 
-        September 17, 2014
-        Django version 1.9.6, using settings 'settings'
-        Starting development server at http://127.0.0.1:8000/
-        Quit the server with CONTROL-C.
+    Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 
-Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
+        127.0.0.1 local.{{ project_name }}.com
 
-    127.0.0.1 local.{{ project_name }}.com
-
-After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!
+    After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!
 
 ## Deployment
 
@@ -138,7 +97,7 @@ After you've done that, open your browser and navigate to "[local.{{ project_nam
 
 7. Start gunicorn.
 
-        /home/ubuntu/environments/bonnie/bin/gunicorn wsgi:application -c /var/www/bonnie/conf/gunicorn/current.py
+        /home/ubuntu/environments/{{ project_name }}/bin/gunicorn wsgi:application -c /var/www/{{ project_name }}/conf/gunicorn/current.py
 
 8. Restart nginx.
 

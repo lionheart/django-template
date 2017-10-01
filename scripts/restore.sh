@@ -2,7 +2,7 @@
 
 if [[ -z "$1" ]]; then
     echo "Please provide an archive name from the list below. Please wait."
-    tarsnap --list-archives --keyfile ~/.tarsnap/{{ project_name }}-tarsnap.key
+    tarsnap --list-archives --keyfile ~/.tarsnap/{{ project_name }}-tarsnap.key | sort
     exit
 fi
 

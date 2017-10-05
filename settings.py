@@ -23,7 +23,10 @@ STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "local.{{ project_name }}.com",
+    "{{ project_name }}.com"
+]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

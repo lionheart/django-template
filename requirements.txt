@@ -36,4 +36,6 @@ gunicorn==19.7.1
 # AWS SES
 # django-ses==0.7.1
 
+foreman==0.9.7
+rerun==1.0.28
 

@@ -1,4 +1,4 @@
-django==1.11.4
+django==1.11.5
 psycopg2==2.7.1
 python-memcached==1.58
 
@@ -28,6 +28,7 @@ dj-database-url
 # djrill==2.0
 # Avoids SSL error on connecting to Mandrill's API
 # certifi==2015.04.28
-
+foreman==0.9.7
+rerun==1.0.28
 gunicorn==19.6.0
 gevent

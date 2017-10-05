@@ -1,4 +1,6 @@
 import os
+# from S3 import CallingFormat
+# from boto.s3.connection import OrdinaryCallingFormat
 
 BASE = os.path.abspath(os.path.dirname(__file__))
 
@@ -149,8 +151,10 @@ LOGOUT_URL = '/account/logout'
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
-SESSION_SAVE_EVERY_REQUEST = True
-
+# Uncomment imports at top to enable S3 integration
+#
+# AWS_CALLING_FORMAT = CallingFormat.PATH
+# AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 # AWS_S3_SECURE_URLS = True
 # AWS_QUERYSTRING_AUTH = False
 # AWS_GZIP = True

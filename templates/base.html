@@ -26,21 +26,23 @@
     <meta property="og:image" content="" />
     <meta property="fb:page_id" content="" />
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '']);
-  _gaq.push(['_trackPageview']);
-  _gaq.push(['_trackPageLoadTime']);
+    <script type="text/javascript">
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-   })();
-</script>
+      ga('create', 'UA-XXXXXXXX-X', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('require', 'maxScrollTracker');
+      ga('require', 'pageVisibilityTracker');
+      ga('require', 'cleanUrlTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async type='text/javascript' src='https://www.google-analytics.com/analytics.js'></script>
+    <script async type='text/javascript' src="{% static "js/autotrack.min.js" %}"></script>
 
-    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type='text/javascript' src="{{ MEDIA_URL }}js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type='text/javascript' src="{% static "js/main.js" %}"></script>
 
     {% block media %}{% endblock %}
   </head>

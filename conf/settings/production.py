@@ -2,6 +2,7 @@
 
 import os
 
+BASE = os.path.abspath(os.path.dirname(__file__))
 DEBUG = 'DEBUG' in os.environ
 TEMPLATE_DEBUG = DEBUG
 

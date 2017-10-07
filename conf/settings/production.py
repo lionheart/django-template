@@ -21,8 +21,7 @@ CACHES = {
 # Uncomment if you'd like to use S3 for static file storage.
 STATIC_URL = "/static/"
 
-BASE_URL = "https://{{ project_name }}.com"
-
+BASE_URL = "https://{{ project_name }}.herokuapp.com"
 
 TEMPLATES = [
     {
@@ -51,4 +50,3 @@ TEMPLATES = [
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
-BASE_URL = "https://{{ project_name }}.herokuapp.com"

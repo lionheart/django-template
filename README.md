@@ -49,57 +49,31 @@ Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet re
 
 After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!
 
-## Deployment
+Heroku Setup
+------------
 
-1. Add the following to your SSH configuration in `.ssh/config` (create it if it doesn't already exist).
+1. Create the project on [Heroku](https://heroku.com) and install the PostgreSQL addon.
 
-        Host {{ project_name }}-production
-          HostName IP_ADDRESS_HERE
-          IdentityFile ~/.ssh/{{ project_name }}-web-servers.pem
-          User ubuntu
+    heroku create
+    heroku addons:create heroku-postgresql
 
-3. Acquire the SSH private key for the {{ project_name }} production server and move it to the path referenced above (`~/.ssh/{{ project_name }}-web-servers.pem`). Make sure permissions are set to 400.
+2. Set the environment variables.
 
-        $ cd ~/.ssh
-        $ chmod 400 {{ project_name }}-web-servers.pem
-
-2. Make sure all of your local changes are pushed to GitHub.
-
-3. In the project root, run the following to deploy to the server. Make sure you're running in the virtual environment as specified in step 2 of the prerequisites.
-
-        ({{ project_name }}) $ fab -H {{ project_name }}-production deploy
-
-## Server Provisioning
-
-1. Log into the server.
-
-        $ ssh {{ project_name }}-production
-
-2. Run the provisioning script.
-
-        curl REMOTE_PATH_TO_PROVISIONING_SCRIPT | sudo sh ENVIRONMENT=production sh
-
-3. Update the hostname by editing `/etc/hostname` and `/etc/hosts`.
-
-4. Generate an SSH private key and add it as a deploy key to whatever code host you are using..
-
-        ssh-keygen
-
-5. Clone the repo to `/var/www/{{ project_name }}`.
-
-        cd /var/www/{{ project_name }}
-        git clone REPO_URL .
+    heroku config:set APP_ENVIRONMENT=production
+    heroku config:set AWS_ACCESS_KEY_ID=XXX
+    heroku config:set AWS_SECRET_ACCESS_KEY=XXX
+    heroku config:set AWS_STORAGE_BUCKET_NAME=XXX
 
 Deployment
 ----------
 
-    $ heroku create
-    $ heroku config:set APP_ENVIRONMENT=production
-    $ heroku config:set AWS_ACCESS_KEY_ID=XXX
-    $ heroku config:set AWS_SECRET_ACCESS_KEY=XXX
-    $ heroku config:set AWS_STORAGE_BUCKET_NAME=XXX
-    $ git push heroku master
-    $ heroku run python manage.py syncmedia
+1. Push to Heroku.
+
+    git push heroku master
+
+2. Sync static files to S3.
+
+    heroku run python manage.py syncmedia
 
 PostgreSQL Installation
 -----------------------

@@ -8,6 +8,7 @@ setproctitle
 
 # See https://docs.djangoproject.com/en/1.11/topics/auth/passwords/#using-argon2-with-django
 django[argon2]
+django[bcrypt]
 
 # AWS
 django-storages-redux==1.3.2

@@ -52,28 +52,39 @@ After you've done that, open your browser and navigate to "[local.{{ project_nam
 Heroku Setup
 ------------
 
-1. Create the project on [Heroku](https://heroku.com) and install the PostgreSQL addon.
+1. Create the project on [Heroku](https://heroku.com) or connect it to an existing project.
 
-    heroku create
-    heroku addons:create heroku-postgresql
+       heroku git:remote -a HEROKU-PROJECT-NAME
 
-2. Set the environment variables.
+   Or:
 
-    heroku config:set APP_ENVIRONMENT=production
-    heroku config:set AWS_ACCESS_KEY_ID=XXX
-    heroku config:set AWS_SECRET_ACCESS_KEY=XXX
-    heroku config:set AWS_STORAGE_BUCKET_NAME=XXX
+       heroku create
+
+2. Add the PostgreSQL addon.
+
+       heroku addons:create heroku-postgresql
+
+3. Specify that the project uses the Python buildpack.
+
+       heroku buildpacks:set heroku/python
+
+4. Set the environment variables.
+
+       heroku config:set APP_ENVIRONMENT=production
+       heroku config:set AWS_ACCESS_KEY_ID=XXX
+       heroku config:set AWS_SECRET_ACCESS_KEY=XXX
+       heroku config:set AWS_STORAGE_BUCKET_NAME=XXX
 
 Deployment
 ----------
 
 1. Push to Heroku.
 
-    git push heroku master
+       git push heroku master
 
 2. Sync static files to S3.
 
-    heroku run python manage.py syncmedia
+       heroku run python manage.py syncmedia
 
 PostgreSQL Installation
 -----------------------

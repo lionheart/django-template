@@ -12,7 +12,6 @@ For information on how to use this project template, check out the [wiki](https:
 
 ### Requirements
 
-
 * [Homebrew](https://brew.sh) (not quite a "requirement" but recommended)
 
         $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -74,17 +73,7 @@ Heroku Setup
        heroku config:set AWS_ACCESS_KEY_ID=XXX
        heroku config:set AWS_SECRET_ACCESS_KEY=XXX
        heroku config:set AWS_STORAGE_BUCKET_NAME=XXX
-
-Deployment
-----------
-
-1. Push to Heroku.
-
-       git push heroku master
-
-2. Sync static files to S3.
-
-       heroku run python manage.py syncmedia
+       heroku config:set DISABLE_COLLECTSTATIC=1
 
 PostgreSQL Installation
 -----------------------

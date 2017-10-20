@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import os
+import raven
 import dj_database_url
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(os.path.join('..', '..', os.path.abspath(__file__)))
+BASE = os.path.abspath(os.path.dirname(__file__))
 DEBUG = 'DEBUG' in os.environ
+TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {'default': dj_database_url.config()}
 

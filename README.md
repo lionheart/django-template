@@ -1,4 +1,4 @@
-For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.11).
+For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-2.0).
 
 # {{ project_name }}
 

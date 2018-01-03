@@ -1,4 +1,4 @@
-django==1.11.5
+django==2.0.1
 psycopg2==2.7.1
 python-memcached==1.58
 gevent

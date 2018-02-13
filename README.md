@@ -41,7 +41,7 @@ For information on how to use this project template, check out the [wiki](https:
 
 3. Start the local development server and Sass.
 
-        ({{ project_name }}) $ PYTHONUNBUFFERED=True foreman start -f Procfile.dev
+        ({{ project_name }}) $ foreman start -f Procfile.dev
 
     Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 

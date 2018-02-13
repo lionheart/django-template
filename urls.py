@@ -10,9 +10,9 @@ admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('204$', status_204),
-    path('', views.home, name='home'),
+#   path('204$', status_204),
+#   path('', views.home, name='home'),
 ]
 
-urlpatterns += staticfiles_urlpatterns()
+# urlpatterns += staticfiles_urlpatterns()
 

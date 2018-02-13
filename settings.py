@@ -15,6 +15,7 @@ LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 
 WSGI_APPLICATION = "wsgi.application"
+AUTH_USER_MODEL = 'app.User'
 
 USE_I18N = True
 USE_L10N = True
@@ -27,10 +28,11 @@ SECRET_KEY = '{{ secret_key }}'
 
 ALLOWED_HOSTS = [
     "local.{{ project_name }}.com",
-    "{{ project_name }}.com"
+    "{{ project_name }}.com",
+    "localhost"
 ]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

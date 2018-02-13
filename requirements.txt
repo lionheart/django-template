@@ -2,6 +2,7 @@ django==2.0.1
 psycopg2==2.7.1
 python-memcached==1.58
 gevent
+argon2
 
 # Deployment
 fabric3==1.13.1.post1

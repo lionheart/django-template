@@ -6,7 +6,7 @@ workers = 5
 # Supervisor needs a non-daemonized process
 daemon = False
 
-pidfile = "/tmp/gunicorn.{{ project_name }}.production.pid"
+pidfile = "/var/run/gunicorn.{{ project_name }}.production.pid"
 loglevel = "debug"
 proc_name = "{{ project_name }}-debug"
 worker_class = "gevent"

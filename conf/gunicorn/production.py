@@ -5,7 +5,7 @@ workers = 5
 
 # Supervisor needs a non-daemonized process, but is not Python 3 compatible. So
 # until it is, we run as a daemon.
-daemon = True
+daemon = False
 
 pidfile = "/tmp/gunicorn.{{ project_name }}.production.pid"
 loglevel = "warning"

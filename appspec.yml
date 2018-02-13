@@ -5,28 +5,27 @@ os: linux
 files:
   - source: /
     destination: /var/www/{{ project_name }}
+
 permissions:
   - object: /var/www/{{ project_name }}/manage.py
-    owner: ubuntu
     mode: 755
-    type:
-      - file
   - object: /var/www/{{ project_name }}/scripts
-    owner: ubuntu
-    mode: 755
+    pattern: "**"
     type:
       - file
-  - object: /var/www/{{ project_name }}
-    owner: ubuntu
-    type:
-      - directory
+    mode: 755
+
 hooks:
-  BeforeInstall:
-    - location: scripts/codedeploy/before_install.sh
+  AfterInstall:
+    - location: scripts/codedeploy/after_install.sh
       timeout: 300
       runas: root
   ApplicationStart:
     - location: scripts/codedeploy/application_start.sh
+      timeout: 300
+      runas: root
+  ValidateService:
+    - location: scripts/codedeploy/validate_service.sh
       timeout: 300
       runas: root
 

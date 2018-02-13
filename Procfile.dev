@@ -1,3 +1,2 @@
-web: rerun "source venv/bin/activate && python manage.py runserver"
+web: rerun "PYTHONUNBUFFERED=true python manage.py runserver"
 sass: sass --watch static/scss:static/css
-

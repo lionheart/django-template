@@ -1,3 +1,6 @@
+![](meta/repo-banner.png)
+[![](meta/repo-banner-bottom.png)][lionheart-url]
+
 For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-2.0).
 
 # {{ project_name }}
@@ -100,4 +103,6 @@ For information on how to use this project template, check out the [wiki](https:
         /home/ubuntu/environments/{{ project_name }}/bin/gunicorn wsgi:application -c /var/www/{{ project_name }}/conf/gunicorn/current.py
 
 8. Restart nginx.
+
+[lionheart-url]: https://lionheartsw.com/
 

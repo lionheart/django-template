@@ -3,7 +3,6 @@ import json
 import re
 
 from django.conf import settings
-from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.core.mail import EmailMultiAlternatives
 from django.db.models import Sum, Q, F

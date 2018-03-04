@@ -10,11 +10,8 @@ For information on how to use this project template, check out the [wiki](https:
 * [Requirements](#requirements)
 * [Local Setup](#local-setup)
 * [Local Development](#local-development)
-* [Deployment](#deployment)
-* [Provisioning](#server-provisioning)
 
 ### Requirements
-
 
 * [Homebrew](https://brew.sh) (not quite a "requirement" but recommended)
 
@@ -32,7 +29,7 @@ For information on how to use this project template, check out the [wiki](https:
 
     If you're in the mood for a longer read or have run into issues, here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers Mac OS X, Windows, and Ubuntu).
 
-### Development
+## Local Development
 
 1. Run the initialization script. This will set up your local Python virtual environment, install all requirements, link local settings, initialize the local development database, and run all migrations.
 

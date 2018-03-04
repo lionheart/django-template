@@ -18,17 +18,17 @@ For information on how to use this project template, check out the [wiki](https:
 
 * [Homebrew](https://brew.sh) (not quite a "requirement" but recommended)
 
-        $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 * [Python 3](https://www.python.org/downloads/release/python-361/)
 
-        $ brew install python3
+      $ brew install python3
 
 * [pip](https://pip.pypa.io/en/stable/) (should come bundled when installing Python 3 via Homebrew)
 
 * PostgreSQL
 
-        $ brew install postgresql
+      $ brew install postgresql
 
     If you're in the mood for a longer read or have run into issues, here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers Mac OS X, Windows, and Ubuntu).
 

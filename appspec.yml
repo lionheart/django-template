@@ -24,8 +24,8 @@ hooks:
     - location: scripts/codedeploy/application_start.sh
       timeout: 300
       runas: root
-  ValidateService:
-    - location: scripts/codedeploy/validate_service.sh
-      timeout: 300
-      runas: root
+# ValidateService:
+#   - location: scripts/codedeploy/validate_service.sh
+#     timeout: 300
+#     runas: root
 

@@ -1,4 +1,4 @@
-bind = "unix:/tmp/gunicorn.{{ project_name }}.production.sock"
+bind = "unix:/run/gunicorn/gunicorn.sock"
 
 # http://gunicorn.org/design.html#how-many-workers
 workers = 5
@@ -6,7 +6,7 @@ workers = 5
 # systemd needs a non-daemonized process
 daemon = False
 
-pidfile = "/var/run/gunicorn.pid"
+pidfile = "/run/gunicorn/gunicorn.pid"
 loglevel = "warning"
 proc_name = "{{ project_name }}-production"
 worker_class = "gevent"

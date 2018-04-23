@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-service gunicorn restart
+systemctl stop gunicorn.service
+systemctl restart gunicorn.socket
 service cron restart
 

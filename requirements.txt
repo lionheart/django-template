@@ -22,13 +22,13 @@ raven==6.0.0
 django-cachalot==1.4.1
 
 # Need to install with CFLAGS="-I/usr/pkg/include" prepended in order for system libraries to be found.
-pillow==4.1.1
+pillow==5.0.0
 
 # Thumbnailing
 sorl-thumbnail==12.4a1
 
 django-redis-sessions-fork==0.7.0
-django-lionheart-helpers==3.0.2
+django-lionheart-helpers==3.0.3
 django-statictastic==3.0.1
 
 django-localflavor==1.4.1

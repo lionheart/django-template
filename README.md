@@ -33,7 +33,7 @@ For information on how to use this project template, check out the [wiki](https:
 
        python3 -m venv venv
 
-2. Run the initialization script. This will set up your local Python virtual environment, install all requirements, link local settings, initialize the local development database, and run all migrations.
+2. Run the make setup task. This will install all requirements, link local settings, initialize the local development database, and run all migrations.
 
        make setup
 

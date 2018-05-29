@@ -16,6 +16,9 @@ setup-postgresql:
 	-createdb -O "$(USER)" "$(USER)"
 	-bash scripts/database-init.sh
 
+setup-git-hooks:
+	git_config/configure.sh
+
 setup: setup-postgresql setup-python setup-ruby
 	-ln -s conf/settings/local.py local_settings.py
 	chmod +x manage.py

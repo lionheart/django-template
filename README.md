@@ -15,33 +15,35 @@ For information on how to use this project template, check out the [wiki](https:
 
 * [Homebrew](https://brew.sh) (not quite a "requirement" but recommended)
 
-      $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-* [Python 3](https://www.python.org/downloads/release/python-361/)
+* [Python 3](https://www.python.org/downloads/release/python-365/)
 
-      $ brew install python3
+      brew install python
 
 * [pip](https://pip.pypa.io/en/stable/) (should come bundled when installing Python 3 via Homebrew)
 
-* PostgreSQL
+* [PostgreSQL 10.4](https://www.postgresql.org/about/)
 
-      $ brew install postgresql
-
-    If you're in the mood for a longer read or have run into issues, here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers Mac OS X, Windows, and Ubuntu).
+      brew install postgresql
 
 ## Local Development
 
-1. Run the initialization script. This will set up your local Python virtual environment, install all requirements, link local settings, initialize the local development database, and run all migrations.
+1. Set up the Python virtual environment.
 
-       $ ./scripts/init.sh
+        python3 -m venv venv
+
+2. Run the initialization script. This will set up your local Python virtual environment, install all requirements, link local settings, initialize the local development database, and run all migrations.
+
+        make setup
 
 2. Set up the Git hooks (optional).
 
-       $ git_config/configure.sh
+        make setup-git-hooks
 
 3. Start the local development server and Sass.
 
-       ({{ project_name }}) $ foreman start -f Procfile.dev
+        foreman start -f Procfile.dev
 
     Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 

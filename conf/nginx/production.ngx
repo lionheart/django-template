@@ -12,7 +12,7 @@ proxy_cache_path /var/cache/nginx levels=2:2 keys_zone=maincache:5m max_size=100
 # pagespeed MapRewriteDomain example.cdn.net static.{{ project_name }}.com;
 
 upstream {{ project_name }} {
-  server unix:/tmp/gunicorn.{{ project_name }}.production.sock;
+  server unix:/run/gunicorn/gunicorn.sock;
 }
 
 server {
@@ -55,7 +55,7 @@ server {
   }
 
   location /static/admin/ {
-    alias /home/ubuntu/environments/{{ project_name }}/lib/python2.7/site-packages/django/contrib/admin/static/admin/;
+    alias /usr/local/etc/environments/{{ project_name }}/lib/python2.7/site-packages/django/contrib/admin/static/admin/;
     access_log off;
 
     proxy_cache maincache;

@@ -31,25 +31,24 @@ For information on how to use this project template, check out the [wiki](https:
 
 1. Set up the Python virtual environment.
 
-        python3 -m venv venv
+       python3 -m venv venv
 
 2. Run the initialization script. This will set up your local Python virtual environment, install all requirements, link local settings, initialize the local development database, and run all migrations.
 
-        make setup
+       make setup
 
 2. Set up the Git hooks (optional).
 
-        make setup-git-hooks
+       make setup-git-hooks
 
 3. Start the local development server and Sass.
 
-        foreman start -f Procfile.dev
+       foreman start -f Procfile.dev
 
     Map "local.{{ project_name }}.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
 
        127.0.0.1 local.{{ project_name }}.com
 
-    After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!
-
+    After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!  
 [lionheart-url]: https://lionheartsw.com/
 

@@ -50,5 +50,7 @@ For information on how to use this project template, check out the [wiki](https:
        127.0.0.1 local.{{ project_name }}.com
 
     After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!  
+
+
 [lionheart-url]: https://lionheartsw.com/
 

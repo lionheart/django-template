@@ -1,7 +1,7 @@
 ![](meta/repo-banner.png)
 [![](meta/repo-banner-bottom.png)][lionheart-url]
 
-For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-2.0).
+For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/django-2.0-heroku).
 
 # {{ project_name }}
 
@@ -52,5 +52,16 @@ For information on how to use this project template, check out the [wiki](https:
     After you've done that, open your browser and navigate to "[local.{{ project_name }}.com](http://local.{{ project_name }}.com)". Your project is now running!  
 
 
-[lionheart-url]: https://lionheartsw.com/
+Deployment
+----------
 
+    $ heroku create
+    $ heroku config:set APP_ENVIRONMENT=production
+    $ heroku config:set AWS_ACCESS_KEY_ID=XXX
+    $ heroku config:set AWS_SECRET_ACCESS_KEY=XXX
+    $ heroku config:set AWS_STORAGE_BUCKET_NAME=XXX
+    $ git push heroku master
+    $ heroku run python manage.py syncmedia
+
+
+[lionheart-url]: https://lionheartsw.com/

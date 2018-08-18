@@ -24,7 +24,10 @@ RAVEN_CONFIG = {
     'dsn': ""
 }
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# Uncomment if you'd like to use S3 for local file storage.
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
 STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
 STATIC_URL = "/static/"

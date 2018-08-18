@@ -1,4 +1,5 @@
 import os
+import imp
 # from S3 import CallingFormat
 # from boto.s3.connection import OrdinaryCallingFormat
 
@@ -7,7 +8,7 @@ BASE = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 
 ADMINS = ()
-# SERVER_EMAIL = "hi@examp.com"
+# SERVER_EMAIL = "hi@example.com"
 
 MANAGERS = ADMINS
 TIME_ZONE = 'UTC'
@@ -21,22 +22,19 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATICFILES_DIRS = (os.path.join(BASE, "static"),)
+STATICFILES_DIRS = (os.path.join(BASE, "{{ project_name }}", "static"),)
 STATIC_ROOT = os.path.join(BASE, "collected")
 
 SECRET_KEY = '{{ secret_key }}'
 
-ALLOWED_HOSTS = [
-    "{{ project_name }}.com",
-    ".{{ project_name }}.com",
-    "localhost"
-]
+ALLOWED_HOSTS = [".herokuapp.com"]
 
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -63,9 +61,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.staticfiles',
+
     'app',
     'statictastic',
-    # 'livereload',
     # 'django_object_actions',
     # 'sorl.thumbnail',
     # 'djcelery',
@@ -160,12 +158,15 @@ LOGOUT_URL = '/account/logout'
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
+DEVSERVER_IGNORED_PREFIXES = ['/static', '/media']
+DEVSERVER_MODULES = (
+    'devserver.modules.sql.SQLSummaryModule',
+    'devserver.modules.profile.ProfileSummaryModule',
+)
+
 # Uncomment imports at top to enable S3 integration
 #
 # AWS_CALLING_FORMAT = CallingFormat.PATH
-# AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
-# AWS_S3_SECURE_URLS = True
-# AWS_QUERYSTRING_AUTH = False
 # AWS_GZIP = True
 
 # AWS_STORAGE_BUCKET_NAME = 'uploads-{{ project_name }}'
@@ -174,8 +175,25 @@ INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 #         'Cache-Control': "max-age:86400, public"
 # }
 
-# AWS_ACCESS_KEY_ID = ''
-# AWS_SECRET_ACCESS_KEY = ''
+# from boto.s3.connection import OrdinaryCallingFormat
+# AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+# AWS_S3_SECURE_URLS = True
+# AWS_QUERYSTRING_AUTH = False
+
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+if AWS_STORAGE_BUCKET_NAME:
+    # Optionally change to full CDN url
+    STATIC_URL = "https://s3.amazonaws.com/{}/".format(AWS_STORAGE_BUCKET_NAME)
+else:
+    STATIC_URL = "/static/"
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+
+AWS_STATIC_STORAGE_BUCKET_NAME = os.environ.get("AWS_STATIC_STORAGE_BUCKET_NAME")
+AWS_HEADERS = {
+        'Cache-Control': "max-age:5, public"
+    }
 
 # EMAIL_BACKEND = "django_ses.SESBackend"
 # AWS_SES_ACCESS_KEY_ID = ''
@@ -190,15 +208,24 @@ INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 #     'dsn': "https://{}:{}@app.getsentry.com/4195".format(SENTRY_PUBLIC_KEY, SENTRY_SECRET_KEY)
 # }
 
+DEVSERVER_DEFAULT_ADDR = "0.0.0.0"
+DEVSERVER_DEFAULT_PORT = "80"
+
 # django-statictastic querystring support
 COMMIT_SHA = ""
+
+settings_path = lambda env: os.path.join(BASE, 'conf', 'settings', '{}.py'.format(env))
 
 try:
     from local_settings import *
 except ImportError:
-    raise ImportError("""Please link the appropriate settings file from conf/settings to `local_settings.py` in the project root. E.g.
-
-    ({{ project_name }})$ ln -s conf/settings/local.py local_settings.py""")
+    try:
+        environment = os.environ['APP_ENVIRONMENT']
+    except KeyError:
+        raise Exception("""Please set your app environment (APP_ENVIRONMENT).""")
+    else:
+        config = imp.load_source('local_settings', settings_path(environment))
+        from local_settings import *
 
 # Uncomment if using django-celery
 # try:
@@ -209,4 +236,3 @@ except ImportError:
 #    raise ImportError("""Please link the appropriate settings file from conf/settings/celery to `celeryconfig.py` in the project root. E.g.
 #
 #    ({{ project_name }})$ ln -s conf/settings/celery/local.py celeryconfig.py""")
-

@@ -6,18 +6,10 @@ DEBUG = 'DEBUG' in os.environ
 TEMPLATE_DEBUG = DEBUG
 BASE = os.path.abspath(os.path.dirname(__name__))
 
-ALLOWED_HOSTS = [".{{ project_name }}.com"]
+ALLOWED_HOSTS = [".{{ product_name }}.com", "{{ project_name }}.herokuapp.com"]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '{{ project_name }}',
-        'USER': '{{ project_name }}',
-        'PASSWORD': '{{ project_name }}',
-        'HOST': '127.0.0.1',
-        'PORT': '',
-    }
-}
+import dj_database_url
+DATABASES = {'default': dj_database_url.config()}
 
 CACHES = {
     'default': {
@@ -26,14 +18,12 @@ CACHES = {
     }
 }
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
+# Uncomment if you'd like to use S3 for static file storage.
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATICFILES_STORAGE = 'statictastic.backends.VersionedS3BotoStorage'
 
-# Optionally change to full CDN url
-STATIC_URL = "/static/"
-
-BASE_URL = "https://{{ project_name }}.com"
-
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
 TEMPLATES = [
     {
@@ -59,3 +49,4 @@ TEMPLATES = [
 ]
 
 
+BASE_URL = "https://{{ project_name }}.herokuapp.com"

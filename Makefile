@@ -22,5 +22,7 @@ setup-git-hooks:
 setup: setup-postgresql setup-python setup-ruby
 	-ln -s conf/settings/local.py local_settings.py
 	chmod +x manage.py
+	python manage.py makemigrations app
 	python manage.py migrate
+
 

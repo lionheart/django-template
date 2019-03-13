@@ -34,7 +34,6 @@ STATIC_URL = "/static/"
 
 BASE_URL = "https://{{ project_name }}.com"
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

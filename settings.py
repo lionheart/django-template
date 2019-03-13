@@ -69,7 +69,6 @@ INSTALLED_APPS = (
     # 'django_object_actions',
     # 'sorl.thumbnail',
     # 'djcelery',
-    # 'raven.contrib.django.raven_compat',
 )
 
 LOGGING = {
@@ -122,20 +121,11 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'formatter': 'papertrail',
         },
-        'sentry': {
-            'level': 'ERROR',
-            'class': 'raven.contrib.django.handlers.SentryHandler',
-            'filters': ['require_debug_false'],
-        },
     },
    'loggers': {
         'sorl': {
             'handlers': ['syslog', 'console'],
             'propagate': False,
-        },
-        'raven': {
-            'handlers': ['sentry'],
-            'propagate': False
         },
 #        'django.db.backends': {
 #            'level': 'INFO',
@@ -183,12 +173,6 @@ INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
 # SESSION_REDIS_PREFIX = "session"
 # SESSION_ENGINE = 'redis_sessions.session'
-
-# SENTRY_PUBLIC_KEY = ""
-# SENTRY_SECRET_KEY = ""
-# RAVEN_CONFIG = {
-#     'dsn': "https://{}:{}@app.getsentry.com/4195".format(SENTRY_PUBLIC_KEY, SENTRY_SECRET_KEY)
-# }
 
 # django-statictastic querystring support
 COMMIT_SHA = ""

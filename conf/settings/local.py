@@ -20,10 +20,6 @@ CACHES = {
     }
 }
 
-RAVEN_CONFIG = {
-    'dsn': ""
-}
-
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 

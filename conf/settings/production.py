@@ -2,11 +2,15 @@
 
 import os
 
-DEBUG = 'DEBUG' in os.environ
+debug_override = True
+
+DEBUG = debug_override or 'DEBUG' in os.environ
 TEMPLATE_DEBUG = DEBUG
 BASE = os.path.abspath(os.path.dirname(__name__))
 
-ALLOWED_HOSTS = [".{{ project_name }}.com"]
+ALLOWED_HOSTS = [
+    ".{{ project_name }}.com"
+]
 
 DATABASES = {
     'default': {
@@ -39,6 +43,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE, "templates"),
+            os.path.join(BASE, "app", "templates"),
         ],
         'OPTIONS': {
             'loaders': (

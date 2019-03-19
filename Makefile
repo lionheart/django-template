@@ -1,7 +1,12 @@
 USER := $(USER)
+FILES := $(shell find app -name \*.py | xargs grep -l '\# lint')
 
 css:
 	sass --update static/scss:static/css
+
+lint:
+	-python3 -m mypy $(FILES)
+	-python3 -m pyflakes $(FILES)
 
 setup-python:
 	pip3 install -U pip

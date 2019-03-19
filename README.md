@@ -1,7 +1,7 @@
 ![](meta/repo-banner.png)
 [![](meta/repo-banner-bottom.png)][lionheart-url]
 
-For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-2.0).
+For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-2.1).
 
 # {{ project_name }}
 

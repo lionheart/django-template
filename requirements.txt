@@ -22,7 +22,7 @@ raven==6.0.0
 django-cachalot==1.4.1
 
 # Need to install with CFLAGS="-I/usr/pkg/include" prepended in order for system libraries to be found.
-pillow==6.2.0
+pillow==9.0.1
 
 # Thumbnailing
 sorl-thumbnail==12.4a1
